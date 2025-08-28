@@ -6,31 +6,25 @@
 localpath=$(pwd)
 echo "Local path: $localpath"
 
-# Create the list directory to save list of remote files and directories
-listpath="$localpath/list"
-echo "List path: $listpath"
-mkdir -p $listpath
-cd $listpath;
-
 # Define the FTP base address
-export ftpbase=""
+export ftpbase="ftp://ftp.ebi.ac.uk/pub/databases/opentargets/platform/latest/output/"
 
-# Retrieve the list of files to download from FTP base address
-wget --no-remove-listing $ftpbase
-cat index.html | grep -Po '(?<=href=")[^"]*' | sort | cut -d "/" -f 10 > files.txt
-rm .listing
-rm index.html
+# # Create the list directory to save list of remote files and directories
+# listpath="$localpath/list"
+# echo "List path: $listpath"
+# mkdir -p $listpath
+
+# # Recursively fetch all file paths from the FTP server and write them as relative paths to files.txt
+# lftp -c "
+# open $ftpbase
+# find
+# " | grep -vE '^$|\/$' | sed 's|^\./||' > "$listpath/files.txt"
 
 # Create the download directory
-export downloadpath="$localpath/download"
-echo "Download path: $downloadpath"
-mkdir -p "$downloadpath"
-cd $downloadpath;
+export brickpath="$localpath/brick"
+echo "Brick path: $brickpath"
+mkdir -p "$brickpath"
 
-# Download files in parallel
-cat $listpath/files.txt | xargs -P14 -n1 bash -c '
-  echo $0
-  wget -nH -q -nc -P $downloadpath $ftpbase$0
-'
+wget -r -np -nH --cut-dirs 6 -nv -P "$brickpath" "$ftpbase"
 
 echo "Download done."
