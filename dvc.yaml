@@ -14,4 +14,11 @@ stages:
     deps:
       - stages/01_download.sh
     outs:
+      - download
+  clean:
+    cmd: stages/02_clean.sh
+    deps:
+      - stages/02_clean.sh
+      - download
+    outs:
       - brick
