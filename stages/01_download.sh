@@ -9,22 +9,22 @@ echo "Local path: $localpath"
 # Define the FTP base address
 export ftpbase="ftp://ftp.ebi.ac.uk/pub/databases/opentargets/platform/latest/output/"
 
-# # Create the list directory to save list of remote files and directories
-# listpath="$localpath/list"
-# echo "List path: $listpath"
-# mkdir -p $listpath
+# Create the list directory to save list of remote files and directories
+listpath="$localpath/list"
+echo "List path: $listpath"
+mkdir -p $listpath
 
-# # Recursively fetch all file paths from the FTP server and write them as relative paths to files.txt
-# lftp -c "
-# open $ftpbase
-# find
-# " | grep -vE '^$|\/$' | sed 's|^\./||' > "$listpath/files.txt"
+# Recursively fetch all file paths from the FTP server and write them as relative paths to files.txt
+lftp -c "
+open $ftpbase
+find
+" | grep -vE '^$|\/$' | sed 's|^\./||' > "$listpath/files.txt"
 
-# Create the download directory
-export brickpath="$localpath/brick"
-echo "Brick path: $brickpath"
-mkdir -p "$brickpath"
+# Create the raw directory
+export downloadpath="$localpath/download"
+echo "Download path: $downloadpath"
+mkdir -p "$downloadpath"
 
-wget -r -np -nH --cut-dirs 6 -nv -P "$brickpath" "$ftpbase"
+wget -r -np -nH --cut-dirs 6 -nv -P "$downloadpath" "$ftpbase"
 
 echo "Download done."
