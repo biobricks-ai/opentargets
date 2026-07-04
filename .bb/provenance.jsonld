@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "schema": "http://schema.org/",
+    "@vocab": "https://brickyard.biobricks.ai/ns#"
+  },
+  "@type": "prov:Entity",
+  "@id": "opentargets",
+  "schema:name": "opentargets",
+  "dcterms:source": "ftp://ftp.ebi.ac.uk/pub/databases/opentargets/platform/latest/output/",
+  "dcterms:publisher": "Open Targets (EMBL-EBI)",
+  "dcterms:license": "CC0-1.0",
+  "prov:wasGeneratedBy": {
+    "@type": "prov:Activity",
+    "prov:used": "Open Targets Platform FTP downloads",
+    "stages": [
+      {
+        "cmd": "stages/01_download.sh",
+        "desc": "lftp/wget recursive fetch of latest/output/ from EBI FTP"
+      },
+      {
+        "cmd": "stages/02_clean.sh",
+        "desc": "copy each download subdir to brick/<name>.parquet (partitioned parquet directories)"
+      }
+    ],
+    "prov:endedAtTime": "2026-07-04"
+  },
+  "tableCount": 37,
+  "totalRows": 395211331
+}

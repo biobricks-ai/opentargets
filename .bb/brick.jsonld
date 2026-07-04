@@ -1,0 +1,3227 @@
+{
+  "@context": {
+    "@vocab": "https://brickyard.biobricks.ai/ns#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "http://schema.org/",
+    "biobricks": "https://biobricks.ai/ns#",
+    "tables": {
+      "@id": "csvw:table",
+      "@container": "@index"
+    },
+    "tableSchema": "csvw:tableSchema",
+    "columns": {
+      "@id": "csvw:column",
+      "@container": "@list"
+    },
+    "columnName": "csvw:name",
+    "datatype": "csvw:datatype",
+    "nullCount": {
+      "@id": "nullCount",
+      "@type": "xsd:integer"
+    },
+    "uniqueCount": {
+      "@id": "uniqueCount",
+      "@type": "xsd:integer"
+    },
+    "columnCount": {
+      "@id": "columnCount",
+      "@type": "xsd:integer"
+    },
+    "sampleValues": {
+      "@id": "sampleValues",
+      "@container": "@list"
+    },
+    "uniqueValues": {
+      "@id": "uniqueValues",
+      "@container": "@list"
+    },
+    "rowCountSample": {
+      "@id": "rowCountSample",
+      "@type": "xsd:integer"
+    },
+    "agenticPriority": {
+      "@id": "agenticPriority",
+      "@type": "xsd:integer"
+    },
+    "agenticPriorityLabel": "agenticPriorityLabel",
+    "readiness": "readiness",
+    "readinessNote": "readinessNote"
+  },
+  "@type": [
+    "dcat:Dataset",
+    "schema:Dataset"
+  ],
+  "@id": "https://brickyard.biobricks.ai/brick/opentargets",
+  "agenticPriority": 2,
+  "agenticPriorityLabel": "low",
+  "dcterms:description": "The opentargets BioBrick contains data extracted from the Open Targets Platform, encompassing target-disease associations, drug-target interactions, and related evidence. This dataset includes information on drug warnings, gene expression, mouse phenotypes, and literature-mined associations, enabling applications in drug discovery, toxicology, and target validation.",
+  "tables": {
+    "drug_warning": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/drug_warning",
+      "dcterms:description": "The `drug_warning` table from Open Targets contains drug safety information, specifically warnings associated with drugs (identified by ChEMBL IDs), including the type of warning, affected country, year issued, and a description of the toxicity. It also links these warnings to Experimental Factor Ontology (EFO) terms to classify the affected biological processes or diseases.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 11,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "chemblIds",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of ChEMBL IDs associated with the drug warning.",
+            "nullCount": 0,
+            "uniqueCount": 85,
+            "sampleValues": [
+              "['CHEMBL4303288', 'CHEMBL1380']",
+              "['CHEMBL16073']",
+              "['CHEMBL4303288', 'CHEMBL1380']",
+              "['CHEMBL1419']",
+              "['CHEMBL1252']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "toxicityClass",
+            "datatype": "String",
+            "dcterms:description": "The class of toxicity associated with the drug warning, such as hepatotoxicity or nephrotoxicity.",
+            "nullCount": 12,
+            "uniqueCount": 16,
+            "sampleValues": [
+              "hepatotoxicity",
+              "nephrotoxicity",
+              "immune system toxicity",
+              "cardiotoxicity",
+              "hepatotoxicity"
+            ],
+            "uniqueValues": [
+              "teratogenicity",
+              "hematological toxicity",
+              "respiratory toxicity",
+              "gastrointestinal toxicity",
+              "None",
+              "psychiatric toxicity",
+              "misuse",
+              "neurotoxicity",
+              "cardiotoxicity",
+              "immune system toxicity"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "country",
+            "datatype": "String",
+            "dcterms:description": "The country or countries where the drug warning was issued.",
+            "nullCount": 0,
+            "uniqueCount": 21,
+            "sampleValues": [
+              "United States",
+              "Malaysia; Romania; Germany; Ireland; Panama; Italy; Finland; New Zealand; Ethiopia; Greece; Yemen; C",
+              "United States",
+              "Indonesia; Egypt; Guatemala; Australia",
+              "United States"
+            ],
+            "uniqueValues": [
+              "Germany; European Union; Ireland; United Kingdom; ",
+              "Oman",
+              "France; Italy; Cuba; Chad",
+              "France; United States; United Kingdom; Germany",
+              "Germany; Worldwide; Spain; United Kingdom",
+              "Malaysia; Romania; Germany; Ireland; Panama; Italy",
+              "Indonesia; Egypt; Guatemala; Australia",
+              "United States",
+              "European Union",
+              "France; Spain; Germany"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "description",
+            "datatype": "String",
+            "dcterms:description": "A textual description of the drug warning.",
+            "nullCount": 69,
+            "uniqueCount": 30,
+            "sampleValues": [
+              "Nephropathy",
+              "Higher rate of cardiovascular events in obese and overweight patients using sibutramine than in pati",
+              "Hepatoxicity",
+              "Hepatotoxicity",
+              "occurrence of bronchospasm"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "id",
+            "datatype": "Int64",
+            "dcterms:description": "A unique identifier for the drug warning entry.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "1",
+              "3574",
+              "3",
+              "3578",
+              "5"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "references",
+            "datatype": "List(Struct({'ref_id': String, 'ref_type': String, 'ref_url': String}))",
+            "dcterms:description": "A list of references supporting the drug warning, including ID, type, and URL.",
+            "nullCount": 0,
+            "uniqueCount": 70,
+            "sampleValues": [
+              "[{'ref_id': 'de109a2b-e36c-40d0-85fc-a67a9e7f1ae8', 'ref_type': 'DailyMed', 'ref_url': 'https://dail",
+              "[{'ref_id': '10.1177/009286150103500134', 'ref_type': 'DOI', 'ref_url': 'https://doi.org/10.1177/009",
+              "[{'ref_id': 'de109a2b-e36c-40d0-85fc-a67a9e7f1ae8', 'ref_type': 'DailyMed', 'ref_url': 'https://dail",
+              "[{'ref_id': 'alert/sibutramine-reductil-withdrawal-australia', 'ref_type': 'TGA', 'ref_url': 'https:",
+              "[]"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "warningType",
+            "datatype": "String",
+            "dcterms:description": "The type of warning issued, such as 'Black Box Warning' or 'Withdrawn'.",
+            "nullCount": 0,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "Black Box Warning",
+              "Withdrawn",
+              "Black Box Warning",
+              "Withdrawn",
+              "Black Box Warning"
+            ],
+            "uniqueValues": [
+              "Withdrawn",
+              "Black Box Warning"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "year",
+            "datatype": "Int64",
+            "dcterms:description": "The year the drug warning was issued.",
+            "nullCount": 69,
+            "uniqueCount": 23,
+            "sampleValues": [
+              "1965",
+              "2010",
+              "1999",
+              "1971",
+              "2001"
+            ],
+            "uniqueValues": [
+              "None",
+              "1964",
+              "1965",
+              "1970",
+              "1971",
+              "1974",
+              "1980",
+              "1982",
+              "1983",
+              "1984"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "efo_term",
+            "datatype": "String",
+            "dcterms:description": "The Experimental Factor Ontology (EFO) term describing the adverse event or condition associated with the warning.",
+            "nullCount": 70,
+            "uniqueCount": 26,
+            "sampleValues": [
+              "kidney disease",
+              "cardiotoxicity",
+              "hepatotoxicity",
+              "hepatotoxicity",
+              "bronchial disease"
+            ],
+            "uniqueValues": [
+              "disorientation",
+              "exanthem",
+              "Hepatic necrosis",
+              "None",
+              "Dyspnea",
+              "hypersensitivity reaction disease",
+              "gastrointestinal toxicity",
+              "toxic epidermal necrolysis",
+              "hepatotoxicity",
+              "bronchial disease"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "efo_id",
+            "datatype": "String",
+            "dcterms:description": "The Experimental Factor Ontology (EFO) ID corresponding to the adverse event or condition.",
+            "nullCount": 70,
+            "uniqueCount": 26,
+            "sampleValues": [
+              "EFO:0003086",
+              "EFO:1001482",
+              "EFO:0011052",
+              "EFO:0011052",
+              "EFO:1002018"
+            ],
+            "uniqueValues": [
+              "EFO:0011046",
+              "EFO:0008546",
+              "EFO:0003086",
+              "PATO:0001422",
+              "EFO:1002018",
+              "EFO:1000697",
+              "EFO:0020002",
+              "EFO:0004278",
+              "EFO:1001482",
+              "EFO:0004276"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "efo_id_for_warning_class",
+            "datatype": "String",
+            "dcterms:description": "The Experimental Factor Ontology (EFO) ID specifically for the warning class.",
+            "nullCount": 12,
+            "uniqueCount": 16,
+            "sampleValues": [
+              "EFO:0011052",
+              "EFO:0011056",
+              "EFO:0011053",
+              "EFO:1001482",
+              "EFO:0011052"
+            ],
+            "uniqueValues": [
+              "EFO:0011048",
+              "EFO:0011060",
+              "EFO:1001482",
+              "EFO:0011053",
+              "EFO:0011052",
+              "EFO:0011057",
+              "EFO:0009880",
+              "EFO:0011062",
+              "EFO:0011051",
+              "None"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "colocalisation_ecaviar": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/colocalisation_ecaviar",
+      "dcterms:description": "This table contains colocalization analysis results, specifically eCAVIAR results, between pairs of study-locus associations from Open Targets. It includes metrics such as CLPP, number of colocalizing variants, and beta ratio sign average, indicating the strength and direction of colocalization.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 8,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "leftStudyLocusId",
+            "datatype": "String",
+            "dcterms:description": "A unique identifier for the left study locus involved in the colocalization analysis.",
+            "nullCount": 0,
+            "uniqueCount": 88,
+            "sampleValues": [
+              "000d05393cd5863b3ae6558178928554",
+              "000d24cc7709a9f40d92ef85d1f75606",
+              "000eab0795d970c4e0c5c445ac3164ab",
+              "001bf216fd75501df727c94cdd9828f1",
+              "002378a16cdf145efef4ddd1308c28ce"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "rightStudyLocusId",
+            "datatype": "String",
+            "dcterms:description": "A unique identifier for the right study locus involved in the colocalization analysis.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "9651cca8bc8386a72ff028e24c56fe79",
+              "6a985202a00d48c5acb90b3c9579356b",
+              "8b80e731719d985264460a4e8c0da571",
+              "f362fe46e6cef0a0c0a2ac425033332a",
+              "20fa332a3343e3cba513bb973d931539"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "chromosome",
+            "datatype": "String",
+            "dcterms:description": "The chromosome on which the colocalizing loci are located.",
+            "nullCount": 0,
+            "uniqueCount": 18,
+            "sampleValues": [
+              "17",
+              "11",
+              "16",
+              "1",
+              "17"
+            ],
+            "uniqueValues": [
+              "16",
+              "4",
+              "7",
+              "10",
+              "20",
+              "2",
+              "22",
+              "3",
+              "1",
+              "17"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "rightStudyType",
+            "datatype": "String",
+            "dcterms:description": "The type of study associated with the right locus (e.g., eQTL, pQTL).",
+            "nullCount": 0,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "eqtl",
+              "pqtl",
+              "eqtl",
+              "eqtl",
+              "tuqtl"
+            ],
+            "uniqueValues": [
+              "eqtl",
+              "sceqtl",
+              "sqtl",
+              "pqtl",
+              "tuqtl"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "numberColocalisingVariants",
+            "datatype": "Int64",
+            "dcterms:description": "The number of variants that are colocalizing between the two study loci.",
+            "nullCount": 0,
+            "uniqueCount": 44,
+            "sampleValues": [
+              "14",
+              "23",
+              "1",
+              "1",
+              "2029"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "clpp",
+            "datatype": "Float64",
+            "dcterms:description": "The Colocalization Posterior Probability (CLPP) value, representing the probability that the same causal variant is shared between the two traits.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "0.041950637555999475",
+              "0.023020449155915983",
+              "0.009061183105220527",
+              "0.10365998977775084",
+              "0.0002984998814325562"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "colocalisationMethod",
+            "datatype": "String",
+            "dcterms:description": "The method used to perform the colocalization analysis (e.g., eCAVIAR).",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "eCAVIAR",
+              "eCAVIAR",
+              "eCAVIAR",
+              "eCAVIAR",
+              "eCAVIAR"
+            ],
+            "uniqueValues": [
+              "eCAVIAR"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "betaRatioSignAverage",
+            "datatype": "Float64",
+            "dcterms:description": "The average sign of the beta ratio between the two studies, indicating the direction of effect concordance.",
+            "nullCount": 30,
+            "uniqueCount": 3,
+            "sampleValues": [
+              "1.0",
+              "-1.0",
+              "-1.0",
+              "-1.0",
+              "1.0"
+            ],
+            "uniqueValues": [
+              "None",
+              "-1.0",
+              "1.0"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "expression": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/expression",
+      "dcterms:description": "This table contains gene expression data from Open Targets, specifically listing gene identifiers and the tissues in which they are expressed. The data represents study results related to gene expression across different tissues.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 2,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "id",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene identifier (ENSG) for the gene being measured.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "ENSG00000001036",
+              "ENSG00000001460",
+              "ENSG00000001497",
+              "ENSG00000001617",
+              "ENSG00000001626"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "tissues",
+            "datatype": "List(Struct({'efo_code': String, 'label': String, 'organs': List(String), 'anatomical_systems': List(String), 'rna': Struct({'value': Float64, 'zscore': Int32, 'level': Int32, 'unit': String}), 'protein': Struct({'reliability': Boolean, 'level': Int32, 'cell_type': List(Struct({'name': String, 'reliability': Boolean, 'level': Int32}))})}))",
+            "dcterms:description": "A list of tissues and their corresponding gene expression data, including RNA (value, z-score, level, unit) and protein (reliability, level, cell type) measurements, along with tissue metadata (EFO code, label, organs, anatomical systems).",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'efo_code': 'UBERON_0000956', 'label': 'cerebral cortex', 'organs': ['brain'], 'anatomical_systems",
+              "[{'efo_code': 'UBERON_0001882', 'label': 'nucleus accumbens', 'organs': ['brain'], 'anatomical_syste",
+              "[{'efo_code': 'CL_0000890', 'label': 'alternatively activated macrophage', 'organs': ['immune organ'",
+              "[{'efo_code': 'UBERON_0001873', 'label': 'caudate nucleus', 'organs': ['brain'], 'anatomical_systems",
+              "[{'efo_code': 'UBERON_0002245', 'label': 'cerebellar hemisphere', 'organs': ['brain'], 'anatomical_s"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "drug_molecule": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/drug_molecule",
+      "dcterms:description": "This table contains chemical properties and metadata for drug molecules, including identifiers, chemical structure representations (SMILES, InchiKey), approval status, clinical trial phase, and links to related diseases and targets. It provides a comprehensive overview of drug characteristics and relationships within the Open Targets Platform.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 18,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "id",
+            "datatype": "String",
+            "dcterms:description": "The ChEMBL identifier of the drug molecule.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "CHEMBL1000",
+              "CHEMBL100014",
+              "CHEMBL100109",
+              "CHEMBL100116",
+              "CHEMBL1002"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "canonicalSmiles",
+            "datatype": "String",
+            "dcterms:description": "The simplified molecular-input line-entry system (SMILES) representation of the drug molecule's chemical structure.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "O=C(O)COCCN1CCN(C(c2ccccc2)c2ccc(Cl)cc2)CC1",
+              "CCCC(=O)OCOC(=O)C(C)(C)C",
+              "CC(=O)N[C@H](Cc1ccccc1)C(=O)N1CCC[C@H]1C(=O)N[C@@H](CCCCN)B(O)O",
+              "CC(C)=CCN1CCC2(C)c3cc(O)ccc3CC1C2C",
+              "CC(C)(C)NC[C@H](O)c1ccc(O)c(CO)c1"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "inchiKey",
+            "datatype": "String",
+            "dcterms:description": "The InChIKey, a hashed version of the IUPAC International Chemical Identifier (InChI), representing the drug molecule's chemical structure.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "ZKLPARSLTMPFCP-UHFFFAOYSA-N",
+              "GYKLFBYWXZYSOW-UHFFFAOYSA-N",
+              "UCQIHCRMWNRFNP-QYZOEREBSA-N",
+              "VOKSWYLNZZRQPF-UHFFFAOYSA-N",
+              "NDAUXUAQIAJITI-LBPRGKRZSA-N"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "drugType",
+            "datatype": "String",
+            "dcterms:description": "The type of the drug molecule, such as 'Small molecule' or 'Protein'.",
+            "nullCount": 0,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "Small molecule",
+              "Small molecule",
+              "Small molecule",
+              "Small molecule",
+              "Small molecule"
+            ],
+            "uniqueValues": [
+              "Small molecule",
+              "Protein"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "blackBoxWarning",
+            "datatype": "Boolean",
+            "dcterms:description": "Indicates whether the drug has a black box warning, the most serious type of warning from the FDA.",
+            "nullCount": 0,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "False",
+              "False",
+              "False",
+              "True",
+              "False"
+            ],
+            "uniqueValues": [
+              "False",
+              "True"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "name",
+            "datatype": "String",
+            "dcterms:description": "The common name of the drug molecule.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "CETIRIZINE",
+              "AN-9",
+              "CHEMBL100109",
+              "PENTAZOCINE",
+              "LEVOSALBUTAMOL"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "yearOfFirstApproval",
+            "datatype": "Int64",
+            "dcterms:description": "The year in which the drug was first approved for use.",
+            "nullCount": 60,
+            "uniqueCount": 26,
+            "sampleValues": [
+              "1995",
+              "1967",
+              "1999",
+              "1984",
+              "1948"
+            ],
+            "uniqueValues": [
+              "None",
+              "1947",
+              "1948",
+              "1957",
+              "1960",
+              "1964",
+              "1967",
+              "1970",
+              "1975",
+              "1976"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "maximumClinicalTrialPhase",
+            "datatype": "Float64",
+            "dcterms:description": "The highest phase reached in clinical trials for the drug.",
+            "nullCount": 36,
+            "uniqueCount": 6,
+            "sampleValues": [
+              "4.0",
+              "2.0",
+              "4.0",
+              "4.0",
+              "3.0"
+            ],
+            "uniqueValues": [
+              "None",
+              "-1.0",
+              "1.0",
+              "2.0",
+              "3.0",
+              "4.0"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "parentId",
+            "datatype": "String",
+            "dcterms:description": "The ChEMBL identifier of the parent drug molecule, if applicable.",
+            "nullCount": 96,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "CHEMBL777",
+              "CHEMBL1730",
+              "CHEMBL588",
+              "CHEMBL139"
+            ],
+            "uniqueValues": [
+              "CHEMBL777",
+              "CHEMBL588",
+              "CHEMBL1730",
+              "CHEMBL139",
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "hasBeenWithdrawn",
+            "datatype": "Boolean",
+            "dcterms:description": "Indicates whether the drug has been withdrawn from the market.",
+            "nullCount": 0,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "False",
+              "False",
+              "False",
+              "False",
+              "False"
+            ],
+            "uniqueValues": [
+              "False",
+              "True"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "isApproved",
+            "datatype": "Boolean",
+            "dcterms:description": "Indicates whether the drug is currently approved for use.",
+            "nullCount": 36,
+            "uniqueCount": 3,
+            "sampleValues": [
+              "True",
+              "False",
+              "True",
+              "True",
+              "False"
+            ],
+            "uniqueValues": [
+              "False",
+              "True",
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "tradeNames",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of trade names under which the drug is marketed.",
+            "nullCount": 0,
+            "uniqueCount": 30,
+            "sampleValues": [
+              "[]",
+              "[]",
+              "[]",
+              "[]",
+              "[]"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "synonyms",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of synonyms for the drug molecule.",
+            "nullCount": 0,
+            "uniqueCount": 72,
+            "sampleValues": [
+              "['AC-170', 'Cetiderm', 'Cetirizina', 'Cetirizine']",
+              "['An-9', 'Butyric Acid 2,2-Dimethyl-Propionyloxymethyl Ester', 'Butyric Acid 2,2-Dimethyl-Propionylo",
+              "[]",
+              "['Dl-pentazocine', 'NIH-7958', 'NSC-107430', 'Pentazocina', 'Pentazocine', 'Pentazocine civ', 'WIN 2",
+              "['ASF-1096', 'Albuterol (r)-form', 'Levalbuterol', 'Levosalbutamol', 'R-salbutamol', 'Xopenex']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "crossReferences",
+            "datatype": "List(Struct({'source': String, 'ids': List(String)}))",
+            "dcterms:description": "A list of cross-references to other databases, including the source database and the corresponding identifiers.",
+            "nullCount": 20,
+            "uniqueCount": 81,
+            "sampleValues": [
+              "[{'source': 'drugbank', 'ids': ['DB00341']}, {'source': 'chEBI', 'ids': ['3561']}]",
+              "[{'source': 'drugbank', 'ids': ['DB05103']}]",
+              "[{'source': 'drugbank', 'ids': ['DB07658']}]",
+              "[{'source': 'drugbank', 'ids': ['DB13139']}, {'source': 'chEBI', 'ids': ['8746']}]",
+              "[{'source': 'drugbank', 'ids': ['DB04163']}]"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "childChemblIds",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of ChEMBL identifiers for child molecules related to the drug.",
+            "nullCount": 67,
+            "uniqueCount": 34,
+            "sampleValues": [
+              "['CHEMBL1201113', 'CHEMBL1607273']",
+              "['CHEMBL3038261']",
+              "['CHEMBL5483020', 'CHEMBL3989509', 'CHEMBL3989510']",
+              "['CHEMBL1201061', 'CHEMBL3989693', 'CHEMBL3989589']",
+              "['CHEMBL1200392']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "linkedDiseases",
+            "datatype": "Struct({'rows': List(String), 'count': Int32})",
+            "dcterms:description": "A list of diseases linked to the drug, along with the count of linked diseases.",
+            "nullCount": 46,
+            "uniqueCount": 54,
+            "sampleValues": [
+              "{'rows': ['EFO_0008521', 'HP_0000989', 'EFO_0004256', 'EFO_1001417', 'MONDO_0005271', 'EFO_1001417',",
+              "{'rows': ['EFO_0003060', 'EFO_0000095', 'EFO_0000756'], 'count': 3}",
+              "{'rows': ['MONDO_0004985', 'EFO_0003843', 'EFO_0003843'], 'count': 3}",
+              "{'rows': ['MONDO_0004979', 'MONDO_0004979', 'MONDO_0004979', 'EFO_0000341'], 'count': 4}",
+              "{'rows': ['MONDO_0008903', 'MONDO_0005129', 'MONDO_0015486', 'EFO_0003060', 'MONDO_0004985', 'HP_000"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "linkedTargets",
+            "datatype": "Struct({'rows': List(String), 'count': Int32})",
+            "dcterms:description": "A list of target genes linked to the drug, along with the count of linked targets.",
+            "nullCount": 57,
+            "uniqueCount": 30,
+            "sampleValues": [
+              "{'rows': ['ENSG00000196639'], 'count': 1}",
+              "{'rows': ['ENSG00000147955'], 'count': 1}",
+              "{'rows': ['ENSG00000169252'], 'count': 1}",
+              "{'rows': [], 'count': 0}",
+              "{'rows': ['ENSG00000196639'], 'count': 1}"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "description",
+            "datatype": "String",
+            "dcterms:description": "A brief description of the drug molecule, including its type and maximum clinical trial phase.",
+            "nullCount": 0,
+            "uniqueCount": 54,
+            "sampleValues": [
+              "Small molecule drug with a maximum clinical trial phase of IV (across all indications) that was firs",
+              "Small molecule drug with a maximum clinical trial phase of II (across all indications) and has 3 inv",
+              "Small molecule drug.",
+              "Small molecule drug with a maximum clinical trial phase of IV (across all indications) that was firs",
+              "Small molecule drug with a maximum clinical trial phase of IV (across all indications) that was firs"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "target_essentiality": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/target_essentiality",
+      "dcterms:description": "This table from Open Targets contains gene essentiality study results, specifically linking target identifiers to their essentiality scores. The data provides insights into the importance of specific genes for cell survival or proliferation.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 2,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "id",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene ID of the target.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "ENSG00000000457",
+              "ENSG00000001167",
+              "ENSG00000001460",
+              "ENSG00000001629",
+              "ENSG00000003096"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "geneEssentiality",
+            "datatype": "List(Struct({'depMapEssentiality': List(Struct({'screens': List(Struct({'cellLineName': String, 'depmapId': String, 'diseaseCellLineId': String, 'diseaseFromSource': String, 'expression': Float64, 'geneEffect': Float64, 'mutation': String})), 'tissueId': String, 'tissueName': String})), 'isEssential': Boolean}))",
+            "dcterms:description": "A list of structures containing DepMap essentiality data, including screens performed on various cell lines, indicating whether the gene is essential for cell survival.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'depMapEssentiality': [{'screens': [{'cellLineName': 'NCCIT', 'depmapId': 'ACH-001578', 'diseaseCe",
+              "[{'depMapEssentiality': [{'screens': [{'cellLineName': 'YD-8', 'depmapId': 'ACH-000630', 'diseaseCel",
+              "[{'depMapEssentiality': [{'screens': [{'cellLineName': 'G415', 'depmapId': 'ACH-001850', 'diseaseCel",
+              "[{'depMapEssentiality': [{'screens': [{'cellLineName': 'S-117', 'depmapId': 'ACH-000037', 'diseaseCe",
+              "[{'depMapEssentiality': [{'screens': [{'cellLineName': 'EW-22', 'depmapId': 'ACH-002116', 'diseaseCe"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "openfda_significant_adverse_drug_reactions": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/openfda_significant_adverse_drug_reactions",
+      "dcterms:description": "This table contains study results of significant adverse drug reactions reported to the FDA, linking drugs (identified by ChEMBL ID) to specific adverse events and their statistical significance (LLR, critval). The table also includes event counts and MedDRA codes for adverse events.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 6,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "chembl_id",
+            "datatype": "String",
+            "dcterms:description": "The ChEMBL identifier of the drug associated with the adverse event.",
+            "nullCount": 0,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "CHEMBL1200632",
+              "CHEMBL1200632",
+              "CHEMBL1200632",
+              "CHEMBL1200632",
+              "CHEMBL1200632"
+            ],
+            "uniqueValues": [
+              "CHEMBL3989766",
+              "CHEMBL1231",
+              "CHEMBL1200632",
+              "CHEMBL2105675",
+              "CHEMBL1637"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "event",
+            "datatype": "String",
+            "dcterms:description": "The name of the adverse drug reaction event reported.",
+            "nullCount": 0,
+            "uniqueCount": 97,
+            "sampleValues": [
+              "acute generalised exanthematous pustulosis",
+              "anal ulcer",
+              "antibiotic level below therapeutic",
+              "calcium deficiency",
+              "clostridium difficile colitis"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "count",
+            "datatype": "Int64",
+            "dcterms:description": "The number of times the specific drug-event combination was reported.",
+            "nullCount": 0,
+            "uniqueCount": 61,
+            "sampleValues": [
+              "17",
+              "5",
+              "5",
+              "5",
+              "9"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "llr",
+            "datatype": "Float64",
+            "dcterms:description": "The Log-Likelihood Ratio (LLR) score, quantifying the statistical association between the drug and the adverse event.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "34.22026649524196",
+              "16.656643907237594",
+              "24.359511313854455",
+              "16.831482036233865",
+              "13.049900138386874"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "critval",
+            "datatype": "Float64",
+            "dcterms:description": "The critical value used for statistical significance testing of the drug-event association.",
+            "nullCount": 0,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "12.815871434534436",
+              "12.815871434534436",
+              "12.815871434534436",
+              "12.815871434534436",
+              "12.815871434534436"
+            ],
+            "uniqueValues": [
+              "5.951484291348512",
+              "11.420693519665107",
+              "12.815871434534436",
+              "18.926253868550702",
+              "263.06966381165836"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "meddraCode",
+            "datatype": "String",
+            "dcterms:description": "The MedDRA (Medical Dictionary for Regulatory Activities) code representing the adverse event.",
+            "nullCount": 2,
+            "uniqueCount": 96,
+            "sampleValues": [
+              "10048799",
+              "10002180",
+              "10061643",
+              "10006956",
+              "10009657"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "association_by_datasource_indirect": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/association_by_datasource_indirect",
+      "dcterms:description": "This table contains indirect association scores between targets and diseases, aggregated by datasource and datatype, derived from Open Targets data. The scores and evidence counts reflect the strength of the indirect associations.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 6,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "datatypeId",
+            "datatype": "String",
+            "dcterms:description": "The type of data supporting the association between a target and a disease, e.g., 'animal_model'.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "animal_model",
+              "animal_model",
+              "animal_model",
+              "animal_model",
+              "animal_model"
+            ],
+            "uniqueValues": [
+              "animal_model"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "datasourceId",
+            "datatype": "String",
+            "dcterms:description": "The source of the data supporting the association between a target and a disease, e.g., 'impc'.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "impc",
+              "impc",
+              "impc",
+              "impc",
+              "impc"
+            ],
+            "uniqueValues": [
+              "impc"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "diseaseId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the disease associated with the target, using an ontology such as EFO.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "EFO_0000514",
+              "EFO_0000514",
+              "EFO_0000514",
+              "EFO_0000514",
+              "EFO_0000514"
+            ],
+            "uniqueValues": [
+              "EFO_0000514"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the target (e.g., gene) associated with the disease, typically an Ensembl ID.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "ENSG00000006282",
+              "ENSG00000007038",
+              "ENSG00000007168",
+              "ENSG00000008226",
+              "ENSG00000008282"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "score",
+            "datatype": "Float64",
+            "dcterms:description": "A score representing the strength of the indirect association between the target and disease, with higher scores indicating stronger associations.",
+            "nullCount": 0,
+            "uniqueCount": 93,
+            "sampleValues": [
+              "0.28633540567507354",
+              "0.28147195929418056",
+              "0.26779351634791904",
+              "0.2885239565464754",
+              "0.2812895800548971"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "evidenceCount",
+            "datatype": "Int64",
+            "dcterms:description": "The number of independent pieces of evidence supporting the indirect association between the target and disease.",
+            "nullCount": 0,
+            "uniqueCount": 4,
+            "sampleValues": [
+              "1",
+              "1",
+              "1",
+              "1",
+              "1"
+            ],
+            "uniqueValues": [
+              "1",
+              "2",
+              "3",
+              "9"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "interaction": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/interaction",
+      "dcterms:description": "This table from Open Targets contains interaction data between two targets (A and B), including their identifiers, biological roles, species, and scoring, aggregated from various source databases. The data represents study results of target-target interactions.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 11,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "sourceDatabase",
+            "datatype": "String",
+            "dcterms:description": "The database from which the interaction data was sourced (e.g., IntAct).",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "intact",
+              "intact",
+              "intact",
+              "intact",
+              "intact"
+            ],
+            "uniqueValues": [
+              "intact"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetA",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene identifier for the first interacting entity (target A).",
+            "nullCount": 0,
+            "uniqueCount": 65,
+            "sampleValues": [
+              "ENSG00000173039",
+              "ENSG00000091831",
+              "ENSG00000091831",
+              "ENSG00000091831",
+              "ENSG00000091831"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intA",
+            "datatype": "String",
+            "dcterms:description": "Identifier for the first interacting entity (target A) in the source database.",
+            "nullCount": 0,
+            "uniqueCount": 64,
+            "sampleValues": [
+              "Q04206",
+              "P03372",
+              "P03372",
+              "P03372",
+              "P03372"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intABiologicalRole",
+            "datatype": "String",
+            "dcterms:description": "The biological role of the first interacting entity (target A) in the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 3,
+            "sampleValues": [
+              "enzyme target",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role"
+            ],
+            "uniqueValues": [
+              "enzyme target",
+              "unspecified role",
+              "enzyme"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetB",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene identifier for the second interacting entity (target B).",
+            "nullCount": 18,
+            "uniqueCount": 83,
+            "sampleValues": [
+              "ENSG00000068903",
+              "ENSG00000148180",
+              "ENSG00000108654",
+              "ENSG00000166986",
+              "ENSG00000100201"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intB",
+            "datatype": "String",
+            "dcterms:description": "Identifier for the second interacting entity (target B) in the source database.",
+            "nullCount": 0,
+            "uniqueCount": 97,
+            "sampleValues": [
+              "Q8IXJ6",
+              "P06396",
+              "P17844",
+              "P56192",
+              "Q92841"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intBBiologicalRole",
+            "datatype": "String",
+            "dcterms:description": "The biological role of the second interacting entity (target B) in the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 3,
+            "sampleValues": [
+              "enzyme",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role"
+            ],
+            "uniqueValues": [
+              "enzyme target",
+              "unspecified role",
+              "enzyme"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "speciesA",
+            "datatype": "Struct({'mnemonic': String, 'scientific_name': String, 'taxon_id': Int64})",
+            "dcterms:description": "Taxonomic information (mnemonic, scientific name, and taxon ID) for the species of the first interacting entity (target A).",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}"
+            ],
+            "uniqueValues": [
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sap"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "speciesB",
+            "datatype": "Struct({'mnemonic': String, 'scientific_name': String, 'taxon_id': Int64})",
+            "dcterms:description": "Taxonomic information (mnemonic, scientific name, and taxon ID) for the species of the second interacting entity (target B).",
+            "nullCount": 0,
+            "uniqueCount": 11,
+            "sampleValues": [
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sapiens', 'taxon_id': 9606}"
+            ],
+            "uniqueValues": [
+              "{'mnemonic': 'wnv', 'scientific_name': 'West Nile ",
+              "{'mnemonic': 'human', 'scientific_name': 'Homo sap",
+              "{'mnemonic': 'htl1c', 'scientific_name': 'Human T-",
+              "{'mnemonic': 'mhv68', 'scientific_name': 'Murid he",
+              "{'mnemonic': 'hcvco', 'scientific_name': 'Hepatiti",
+              "{'mnemonic': 'i34a1', 'scientific_name': 'Influenz",
+              "{'mnemonic': 'hhv8', 'scientific_name': 'Human her",
+              "{'mnemonic': 'influenza a virus (a/viet nam/1203/2",
+              "{'mnemonic': 'hhv8p', 'scientific_name': 'Human he",
+              "{'mnemonic': 'ebvb9', 'scientific_name': 'Epstein-"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "count",
+            "datatype": "Int64",
+            "dcterms:description": "The number of times this specific interaction has been observed or reported.",
+            "nullCount": 0,
+            "uniqueCount": 9,
+            "sampleValues": [
+              "1",
+              "3",
+              "4",
+              "3",
+              "3"
+            ],
+            "uniqueValues": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "7",
+              "10",
+              "11",
+              "23"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "scoring",
+            "datatype": "Float64",
+            "dcterms:description": "A confidence score representing the reliability or strength of the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 27,
+            "sampleValues": [
+              "0.54",
+              "0.6",
+              "0.64",
+              "0.53",
+              "0.6"
+            ],
+            "uniqueValues": [
+              "0.27",
+              "0.35",
+              "0.37",
+              "0.4",
+              "0.44",
+              "0.46",
+              "0.49",
+              "0.51",
+              "0.52",
+              "0.53"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "target": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/target",
+      "dcterms:description": "This table from Open Targets contains reference information for individual targets (typically genes or proteins), including identifiers, nomenclature, genomic location, functional annotations (GO terms, pathways), and links to related data such as chemical probes and safety liabilities. It provides a comprehensive overview of target properties and relationships relevant for drug discovery.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 29,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "id",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene identifier for the target.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "ENSG00000000457",
+              "ENSG00000001167",
+              "ENSG00000001460",
+              "ENSG00000001629",
+              "ENSG00000003096"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "approvedSymbol",
+            "datatype": "String",
+            "dcterms:description": "The official gene symbol approved by the HGNC.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "SCYL3",
+              "NFYA",
+              "STPG1",
+              "ANKIB1",
+              "KLHL13"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "biotype",
+            "datatype": "String",
+            "dcterms:description": "The type of gene, such as protein_coding or processed_pseudogene.",
+            "nullCount": 0,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "protein_coding",
+              "protein_coding",
+              "protein_coding",
+              "protein_coding",
+              "protein_coding"
+            ],
+            "uniqueValues": [
+              "protein_coding",
+              "processed_pseudogene"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "transcriptIds",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of Ensembl transcript identifiers associated with the target.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "['ENST00000367772', 'ENST00000423670', 'ENST00000470238', 'ENST00000367771', 'ENST00000367770']",
+              "['ENST00000341376', 'ENST00000353205']",
+              "['ENST00000475760', 'ENST00000483261', 'ENST00000492753', 'ENST00000498488', 'ENST00000497384', 'ENS",
+              "['ENST00000465883', 'ENST00000486698', 'ENST00000422095', 'ENST00000442183', 'ENST00000265742', 'ENS",
+              "['ENST00000262820', 'ENST00000371876', 'ENST00000469946', 'ENST00000540167', 'ENST00000371878', 'ENS"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "canonicalTranscript",
+            "datatype": "Struct({'id': String, 'chromosome': String, 'start': Int64, 'end': Int64, 'strand': String})",
+            "dcterms:description": "Information about the canonical transcript, including its ID, chromosome, start, end, and strand.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "{'id': 'ENST00000367771', 'chromosome': '1', 'start': 169849631, 'end': 169893896, 'strand': '-'}",
+              "{'id': 'ENST00000341376', 'chromosome': '6', 'start': 41072974, 'end': 41102403, 'strand': '+'}",
+              "{'id': 'ENST00000337248', 'chromosome': '1', 'start': 24356999, 'end': 24413782, 'strand': '-'}",
+              "{'id': 'ENST00000265742', 'chromosome': '7', 'start': 92245974, 'end': 92401383, 'strand': '+'}",
+              "{'id': 'ENST00000262820', 'chromosome': 'X', 'start': 117897814, 'end': 117973738, 'strand': '-'}"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "canonicalExons",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of genomic coordinates representing the exons of the canonical transcript.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "['169854270', '169854964', '169868928', '169869039', '169859041', '169859212', '169875978', '1698760",
+              "['41094396', '41094497', '41091528', '41091694', '41084046', '41084192', '41079029', '41079164', '41",
+              "['24413674', '24413782', '24369674', '24369839', '24360851', '24361041', '24391561', '24391679', '24",
+              "['92307359', '92307656', '92294889', '92295166', '92319330', '92319512', '92343024', '92343232', '92",
+              "['117920238', '117920370', '117919521', '117919717', '117901833', '117901946', '117909301', '1179100"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "genomicLocation",
+            "datatype": "Struct({'chromosome': String, 'start': Int64, 'end': Int64, 'strand': Int32})",
+            "dcterms:description": "The genomic location of the target, including chromosome, start, end, and strand.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "{'chromosome': '1', 'start': 169849631, 'end': 169894267, 'strand': -1}",
+              "{'chromosome': '6', 'start': 41072974, 'end': 41102403, 'strand': 1}",
+              "{'chromosome': '1', 'start': 24356999, 'end': 24416934, 'strand': -1}",
+              "{'chromosome': '7', 'start': 92245974, 'end': 92401383, 'strand': 1}",
+              "{'chromosome': 'X', 'start': 117897813, 'end': 118117340, 'strand': -1}"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "alternativeGenes",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of Ensembl gene identifiers representing alternative genes.",
+            "nullCount": 94,
+            "uniqueCount": 7,
+            "sampleValues": [
+              "['ENSG00000262327']",
+              "['ENSG00000278787']",
+              "['ENSG00000281221']",
+              "['ENSG00000276230']",
+              "['ENSG00000292155']"
+            ],
+            "uniqueValues": [
+              "['ENSG00000276230']",
+              "['ENSG00000281221']",
+              "['ENSG00000292155']",
+              "['ENSG00000235443', 'ENSG00000235176', 'ENSG000002",
+              "None",
+              "['ENSG00000278787']",
+              "['ENSG00000262327']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "approvedName",
+            "datatype": "String",
+            "dcterms:description": "The full, descriptive name of the gene approved by the HGNC.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "SCY1 like pseudokinase 3",
+              "nuclear transcription factor Y subunit alpha",
+              "sperm tail PG-rich repeat containing 1",
+              "ankyrin repeat and IBR domain containing 1",
+              "kelch like family member 13"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "go",
+            "datatype": "List(Struct({'id': String, 'source': String, 'evidence': String, 'aspect': String, 'geneProduct': String, 'ecoId': String}))",
+            "dcterms:description": "A list of Gene Ontology (GO) annotations associated with the target, including ID, source, evidence, aspect, gene product, and ECO ID.",
+            "nullCount": 1,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'id': 'GO:0005737', 'source': 'GO_REF:0000043', 'evidence': 'IEA', 'aspect': 'C', 'geneProduct': '",
+              "[{'id': 'GO:0000785', 'source': 'GO_REF:0000113', 'evidence': 'ISA', 'aspect': 'C', 'geneProduct': '",
+              "[{'id': 'GO:1902110', 'source': 'GO_REF:0000033', 'evidence': 'IBA', 'aspect': 'P', 'geneProduct': '",
+              "[{'id': 'GO:0008270', 'source': 'GO_REF:0000002', 'evidence': 'IEA', 'aspect': 'F', 'geneProduct': '",
+              "[{'id': 'GO:0005829', 'source': 'Reactome:R-HSA-8955241', 'evidence': 'TAS', 'aspect': 'C', 'genePro"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "hallmarks",
+            "datatype": "Struct({'attributes': List(Struct({'pmid': Int64, 'description': String, 'attribute_name': String})), 'cancerHallmarks': List(Struct({'pmid': Int64, 'description': String, 'impact': String, 'label': String}))})",
+            "dcterms:description": "Information about cancer hallmarks associated with the target, including attributes and cancer hallmarks.",
+            "nullCount": 97,
+            "uniqueCount": 4,
+            "sampleValues": [
+              "{'attributes': [{'pmid': 10706619, 'description': 'fusion', 'attribute_name': 'role in cancer'}, {'p",
+              "{'attributes': [{'pmid': 21575258, 'description': 'TSG', 'attribute_name': 'role in cancer'}, {'pmid",
+              "{'attributes': [{'pmid': 8351518, 'description': 'SMMHC', 'attribute_name': 'fusion partner'}, {'pmi"
+            ],
+            "uniqueValues": [
+              "{'attributes': [{'pmid': 10706619, 'description': ",
+              "None",
+              "{'attributes': [{'pmid': 21575258, 'description': ",
+              "{'attributes': [{'pmid': 8351518, 'description': '"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "synonyms",
+            "datatype": "List(Struct({'label': String, 'source': String}))",
+            "dcterms:description": "A list of synonyms for the target, including the synonym label and source.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'label': 'Protein-associating with the carboxyl-terminal domain of ezrin', 'source': 'uniprot'}, {",
+              "[{'label': 'Nuclear transcription factor Y subunit alpha', 'source': 'uniprot'}, {'label': 'NFYA', '",
+              "[{'label': 'O(6)-methylguanine-induced apoptosis 2', 'source': 'uniprot'}, {'label': 'STPG1', 'sourc",
+              "[{'label': 'Ankyrin repeat and IBR domain-containing protein 1', 'source': 'uniprot'}, {'label': 'AN",
+              "[{'label': 'Kelch-like protein 13', 'source': 'uniprot'}, {'label': 'KLHL13', 'source': 'uniprot'}, "
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "symbolSynonyms",
+            "datatype": "List(Struct({'label': String, 'source': String}))",
+            "dcterms:description": "A list of symbol synonyms for the target, including the synonym label and source.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'label': 'SCYL3', 'source': 'uniprot'}, {'label': 'PACE1', 'source': 'uniprot'}, {'label': 'PACE-1",
+              "[{'label': 'NFYA', 'source': 'uniprot'}, {'label': 'NF-YA', 'source': 'uniprot'}, {'label': 'HAP2', ",
+              "[{'label': 'STPG1', 'source': 'uniprot'}, {'label': 'C1orf201', 'source': 'uniprot'}, {'label': 'MAP",
+              "[{'label': 'ANKIB1', 'source': 'uniprot'}, {'label': 'KIAA1386', 'source': 'uniprot'}, {'label': 'DK",
+              "[{'label': 'KLHL13', 'source': 'uniprot'}, {'label': 'BKLHD2', 'source': 'uniprot'}, {'label': 'KIAA"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "nameSynonyms",
+            "datatype": "List(Struct({'label': String, 'source': String}))",
+            "dcterms:description": "A list of name synonyms for the target, including the synonym label and source.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'label': 'Protein-associating with the carboxyl-terminal domain of ezrin', 'source': 'uniprot'}, {",
+              "[{'label': 'Nuclear transcription factor Y subunit alpha', 'source': 'uniprot'}, {'label': 'CAAT box",
+              "[{'label': 'O(6)-methylguanine-induced apoptosis 2', 'source': 'uniprot'}, {'label': 'Sperm-tail PG-",
+              "[{'label': 'Ankyrin repeat and IBR domain-containing protein 1', 'source': 'uniprot'}, {'label': 'an",
+              "[{'label': 'Kelch-like protein 13', 'source': 'uniprot'}, {'label': 'BTB and kelch domain-containing"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "functionDescriptions",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of descriptions of the target's function.",
+            "nullCount": 0,
+            "uniqueCount": 91,
+            "sampleValues": [
+              "['May play a role in regulating cell adhesion/migration complexes in migrating cells. .']",
+              "[\"Component of the sequence-specific heterotrimeric transcription factor (NF-Y) which specifically r",
+              "['May positively contribute to the induction of apoptosis triggered by O(6)-methylguanine. .']",
+              "['Might act as an E3 ubiquitin-protein ligase, or as part of E3 complex, which accepts ubiquitin fro",
+              "['Substrate-specific adapter of a BCR (BTB-CUL3-RBX1) E3 ubiquitin-protein ligase complex required f"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "subcellularLocations",
+            "datatype": "List(Struct({'location': String, 'source': String, 'termSL': String, 'labelSL': String}))",
+            "dcterms:description": "A list of subcellular locations of the target, including location, source, term, and label.",
+            "nullCount": 0,
+            "uniqueCount": 86,
+            "sampleValues": [
+              "[{'location': 'Cytoplasm', 'source': 'uniprot', 'termSL': 'SL-0086', 'labelSL': 'Cellular component'",
+              "[{'location': 'Nucleus', 'source': 'uniprot', 'termSL': 'SL-0191', 'labelSL': 'Cellular component'},",
+              "[{'location': 'Cytoplasm', 'source': 'uniprot', 'termSL': 'SL-0086', 'labelSL': 'Cellular component'",
+              "[{'location': 'Cytosol', 'source': 'HPA_main', 'termSL': 'SL-0091', 'labelSL': 'Cytosol'}, {'locatio",
+              "[{'location': 'Cytosol', 'source': 'HPA_main', 'termSL': 'SL-0091', 'labelSL': 'Cytosol'}]"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetClass",
+            "datatype": "List(Struct({'id': Int64, 'label': String, 'level': String}))",
+            "dcterms:description": "A list of target classes associated with the target, including ID, label, and level.",
+            "nullCount": 62,
+            "uniqueCount": 24,
+            "sampleValues": [
+              "[{'id': 10, 'label': 'Enzyme', 'level': 'l1'}, {'id': 10, 'label': 'Oxidoreductase', 'level': 'l2'}]",
+              "[{'id': 11, 'label': 'Membrane receptor', 'level': 'l1'}]",
+              "[{'id': 11, 'label': 'Membrane receptor', 'level': 'l1'}]",
+              "[{'id': 848, 'label': 'Epigenetic regulator', 'level': 'l1'}, {'id': 859, 'label': 'Plant homeodomai",
+              "[{'id': 643, 'label': 'Enzyme', 'level': 'l1'}, {'id': 643, 'label': 'Transferase', 'level': 'l2'}]"
+            ],
+            "uniqueValues": [
+              "[{'id': 860, 'label': 'Methyl-lysine/arginine bind",
+              "[{'id': 12, 'label': 'Transcription factor', 'leve",
+              "[{'id': 4, 'label': 'Structural protein', 'level':",
+              "[{'id': 565, 'label': 'Lipid-like ligand receptor ",
+              "[{'id': 245, 'label': 'CAMK protein kinase group',",
+              "[{'id': 834, 'label': 'Auxiliary transport protein",
+              "[{'id': 141, 'label': 'Kinase', 'level': 'l2'}, {'",
+              "[{'id': 2, 'label': 'Adhesion', 'level': 'l1'}]",
+              "[{'id': 691, 'label': 'SLC superfamily of solute c",
+              "[{'id': 643, 'label': 'Enzyme', 'level': 'l1'}, {'"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "obsoleteSymbols",
+            "datatype": "List(Struct({'label': String, 'source': String}))",
+            "dcterms:description": "A list of obsolete gene symbols for the target, including the symbol label and source.",
+            "nullCount": 0,
+            "uniqueCount": 46,
+            "sampleValues": [
+              "[]",
+              "[]",
+              "[{'label': 'C1orf201', 'source': 'HGNC'}]",
+              "[]",
+              "[{'label': 'BKLHD2', 'source': 'HGNC'}, {'label': 'KIAA1309', 'source': 'HGNC'}]"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "obsoleteNames",
+            "datatype": "List(Struct({'label': String, 'source': String}))",
+            "dcterms:description": "A list of obsolete gene names for the target, including the name label and source.",
+            "nullCount": 0,
+            "uniqueCount": 86,
+            "sampleValues": [
+              "[{'label': 'SCY1-like 3 (S. cerevisiae)', 'source': 'HGNC'}, {'label': 'SCY1-like, kinase-like 3', '",
+              "[{'label': 'nuclear transcription factor Y, alpha', 'source': 'HGNC'}]",
+              "[{'label': 'chromosome 1 open reading frame 201', 'source': 'HGNC'}]",
+              "[]",
+              "[{'label': 'BTB and kelch domain containing 2, KIAA1309', 'source': 'HGNC'}, {'label': 'kelch-like 1"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "constraint",
+            "datatype": "List(Struct({'constraintType': String, 'score': Float32, 'exp': Float32, 'obs': Int32, 'oe': Float32, 'oeLower': Float32, 'oeUpper': Float32, 'upperRank': Int32, 'upperBin': Int32, 'upperBin6': Int32}))",
+            "dcterms:description": "Constraint metrics for the target, including constraint type, score, expected and observed counts, and observed/expected ratio.",
+            "nullCount": 2,
+            "uniqueCount": 99,
+            "sampleValues": [
+              "[{'constraintType': 'syn', 'score': 0.7081800103187561, 'exp': 146.9199981689453, 'obs': 136, 'oe': ",
+              "[{'constraintType': 'syn', 'score': -0.17463000118732452, 'exp': 68.16600036621094, 'obs': 70, 'oe':",
+              "[{'constraintType': 'syn', 'score': 0.5478799939155579, 'exp': 77.12100219726562, 'obs': 71, 'oe': 0",
+              "[{'constraintType': 'syn', 'score': 2.0866000652313232, 'exp': 190.64999389648438, 'obs': 154, 'oe':",
+              "[{'constraintType': 'syn', 'score': 0.7328100204467773, 'exp': 91.93900299072266, 'obs': 83, 'oe': 0"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "tep",
+            "datatype": "Struct({'targetFromSourceId': String, 'description': String, 'therapeuticArea': String, 'url': String})",
+            "dcterms:description": "Information about the Target Enabling Package (TEP) for the target, including target ID, description, therapeutic area, and URL.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "proteinIds",
+            "datatype": "List(Struct({'id': String, 'source': String}))",
+            "dcterms:description": "A list of protein identifiers associated with the target, including ID and source.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'id': 'Q8IZE3', 'source': 'uniprot_swissprot'}, {'id': 'X6RHX1', 'source': 'uniprot_trembl'}, {'id",
+              "[{'id': 'P23511', 'source': 'uniprot_swissprot'}, {'id': 'ENSP00000229418', 'source': 'ensembl_PRO'}",
+              "[{'id': 'Q5TH74', 'source': 'uniprot_swissprot'}, {'id': 'H0Y4J3', 'source': 'uniprot_trembl'}, {'id",
+              "[{'id': 'Q9P2G1', 'source': 'uniprot_swissprot'}, {'id': 'C9JZ63', 'source': 'uniprot_trembl'}, {'id",
+              "[{'id': 'Q9P2N7', 'source': 'uniprot_swissprot'}, {'id': 'A0A0C4DG80', 'source': 'uniprot_trembl'}, "
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "dbXrefs",
+            "datatype": "List(Struct({'id': String, 'source': String}))",
+            "dcterms:description": "A list of database cross-references for the target, including ID and source.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'id': '19285', 'source': 'HGNC'}, {'id': 'IPR011989', 'source': 'InterPro'}, {'id': 'IPR016024', '",
+              "[{'id': '7804', 'source': 'HGNC'}, {'id': '4AWL', 'source': 'PDB'}, {'id': '6QMP', 'source': 'PDB'},",
+              "[{'id': '28070', 'source': 'HGNC'}, {'id': 'IPR010736', 'source': 'InterPro'}]",
+              "[{'id': '22215', 'source': 'HGNC'}, {'id': 'IPR002110', 'source': 'InterPro'}, {'id': 'IPR036770', '",
+              "[{'id': '22931', 'source': 'HGNC'}, {'id': 'R-HSA-8951664', 'source': 'Reactome'}, {'id': 'R-HSA-983"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "chemicalProbes",
+            "datatype": "List(Struct({'control': String, 'drugId': String, 'id': String, 'isHighQuality': Boolean, 'mechanismOfAction': List(String), 'origin': List(String), 'probeMinerScore': Int64, 'probesDrugsScore': Int64, 'scoreInCells': Int64, 'scoreInOrganisms': Int64, 'targetFromSourceId': String, 'urls': List(Struct({'niceName': String, 'url': String}))}))",
+            "dcterms:description": "Information about chemical probes targeting the target, including control status, drug ID, probe ID, quality, mechanism of action, origin, scores, target ID, and URLs.",
+            "nullCount": 94,
+            "uniqueCount": 7,
+            "sampleValues": [
+              "[{'control': None, 'drugId': 'CHEMBL5191316', 'id': 'GNE-7883', 'isHighQuality': True, 'mechanismOfA",
+              "[{'control': None, 'drugId': 'CHEMBL605003', 'id': 'SU6656', 'isHighQuality': False, 'mechanismOfAct",
+              "[{'control': None, 'drugId': 'CHEMBL217941', 'id': 'CHEMBL217941', 'isHighQuality': False, 'mechanis",
+              "[{'control': None, 'drugId': 'CHEMBL4551635', 'id': 'BAY-069', 'isHighQuality': True, 'mechanismOfAc",
+              "[{'control': None, 'drugId': None, 'id': 'BSJ-04-122', 'isHighQuality': True, 'mechanismOfAction': ["
+            ],
+            "uniqueValues": [
+              "[{'control': None, 'drugId': None, 'id': 'BSJ-04-1",
+              "[{'control': None, 'drugId': 'CHEMBL4551635', 'id'",
+              "None",
+              "[{'control': None, 'drugId': 'CHEMBL605003', 'id':",
+              "[{'control': None, 'drugId': 'CHEMBL1499653', 'id'",
+              "[{'control': None, 'drugId': 'CHEMBL217941', 'id':",
+              "[{'control': None, 'drugId': 'CHEMBL5191316', 'id'"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "homologues",
+            "datatype": "List(Struct({'speciesId': String, 'speciesName': String, 'homologyType': String, 'targetGeneId': String, 'isHighConfidence': String, 'targetGeneSymbol': String, 'queryPercentageIdentity': Float64, 'targetPercentageIdentity': Float64, 'priority': Int32}))",
+            "dcterms:description": "A list of homologues for the target in other species, including species ID, species name, homology type, target gene ID, confidence, gene symbol, and percentage identity.",
+            "nullCount": 1,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'speciesId': '9606', 'speciesName': 'Human', 'homologyType': 'other_paralog', 'targetGeneId': 'ENS",
+              "[{'speciesId': '9598', 'speciesName': 'Chimpanzee', 'homologyType': 'ortholog_one2one', 'targetGeneI",
+              "[{'speciesId': '9606', 'speciesName': 'Human', 'homologyType': 'other_paralog', 'targetGeneId': 'ENS",
+              "[{'speciesId': '9606', 'speciesName': 'Human', 'homologyType': 'other_paralog', 'targetGeneId': 'ENS",
+              "[{'speciesId': '9606', 'speciesName': 'Human', 'homologyType': 'within_species_paralog', 'targetGene"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "tractability",
+            "datatype": "List(Struct({'modality': String, 'id': String, 'value': Boolean}))",
+            "dcterms:description": "Information about the tractability of the target by different modalities, including modality, ID, and value (boolean).",
+            "nullCount": 1,
+            "uniqueCount": 66,
+            "sampleValues": [
+              "[{'modality': 'SM', 'id': 'Approved Drug', 'value': False}, {'modality': 'SM', 'id': 'Advanced Clini",
+              "[{'modality': 'SM', 'id': 'Approved Drug', 'value': False}, {'modality': 'SM', 'id': 'Advanced Clini",
+              "[{'modality': 'SM', 'id': 'Approved Drug', 'value': False}, {'modality': 'SM', 'id': 'Advanced Clini",
+              "[{'modality': 'SM', 'id': 'Approved Drug', 'value': False}, {'modality': 'SM', 'id': 'Advanced Clini",
+              "[{'modality': 'SM', 'id': 'Approved Drug', 'value': False}, {'modality': 'SM', 'id': 'Advanced Clini"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "safetyLiabilities",
+            "datatype": "List(Struct({'event': String, 'eventId': String, 'effects': List(Struct({'direction': String, 'dosing': String})), 'biosamples': List(Struct({'cellFormat': String, 'cellLabel': String, 'tissueId': String, 'tissueLabel': String})), 'datasource': String, 'literature': String, 'url': String, 'studies': List(Struct({'description': String, 'name': String, 'type': String}))}))",
+            "dcterms:description": "Information about safety liabilities associated with the target, including event, event ID, effects, biosamples, datasource, literature, URL, and studies.",
+            "nullCount": 92,
+            "uniqueCount": 9,
+            "sampleValues": [
+              "[{'event': 'regulation of catalytic activity', 'eventId': None, 'effects': None, 'biosamples': [{'ce",
+              "[{'event': 'asthma', 'eventId': 'MONDO_0004979', 'effects': None, 'biosamples': None, 'datasource': ",
+              "[{'event': 'alcoholism', 'eventId': 'MONDO_0007079', 'effects': None, 'biosamples': None, 'datasourc",
+              "[{'event': 'aspirin-intolerant asthma', 'eventId': None, 'effects': None, 'biosamples': None, 'datas",
+              "[{'event': 'Reduced, survival', 'eventId': None, 'effects': [{'direction': 'Inhibition/Decrease/Down"
+            ],
+            "uniqueValues": [
+              "[{'event': 'Reduced, survival', 'eventId': None, '",
+              "[{'event': 'weight gain', 'eventId': 'EFO_0004566'",
+              "[{'event': 'alcoholism', 'eventId': 'MONDO_0007079",
+              "[{'event': 'regulation of catalytic activity', 'ev",
+              "None",
+              "[{'event': 'alcoholism', 'eventId': 'HP_0030955', ",
+              "[{'event': 'heroin dependence', 'eventId': 'EFO_00",
+              "[{'event': 'asthma', 'eventId': 'MONDO_0004979', '",
+              "[{'event': 'aspirin-intolerant asthma', 'eventId':"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "pathways",
+            "datatype": "List(Struct({'pathwayId': String, 'pathway': String, 'topLevelTerm': String}))",
+            "dcterms:description": "A list of pathways the target is involved in, including pathway ID, pathway name, and top-level term.",
+            "nullCount": 38,
+            "uniqueCount": 61,
+            "sampleValues": [
+              "[{'pathwayId': 'R-HSA-9614657', 'pathway': 'FOXO-mediated transcription of cell death genes', 'topLe",
+              "[{'pathwayId': 'R-HSA-983168', 'pathway': 'Antigen processing: Ubiquitination & Proteasome degradati",
+              "[{'pathwayId': 'R-HSA-77289', 'pathway': 'Mitochondrial Fatty Acid Beta-Oxidation', 'topLevelTerm': ",
+              "[{'pathwayId': 'R-HSA-372708', 'pathway': 'p130Cas linkage to MAPK signaling for integrins', 'topLev",
+              "[{'pathwayId': 'R-HSA-5676594', 'pathway': 'TNF receptor superfamily (TNFSF) members mediating non-c"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "tss",
+            "datatype": "Int64",
+            "dcterms:description": "Transcription start site coordinate on the chromosome.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "169893896",
+              "41072974",
+              "24413782",
+              "92245974",
+              "117973738"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "disease_hpo": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/disease_hpo",
+      "dcterms:description": "The `disease_hpo` table from Open Targets contains information about diseases and their associated Human Phenotype Ontology (HPO) terms. It includes identifiers, names, descriptions, database cross-references, parent terms, and obsolete terms for each disease-HPO association.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 6,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "id",
+            "datatype": "String",
+            "dcterms:description": "The ChEBI identifier of the chemical entity.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "CHEBI_10545",
+              "CHEBI_11596",
+              "CHEBI_11851",
+              "CHEBI_11955",
+              "CHEBI_12109"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "name",
+            "datatype": "String",
+            "dcterms:description": "The preferred name of the chemical entity.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "electron",
+              "2-hydroxyglutarate(2-)",
+              "3-methyl-2-oxobutanoate",
+              "4-amino-3-hydroxybutanoate",
+              "5-aminolevulinate"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "description",
+            "datatype": "String",
+            "dcterms:description": "A textual description of the chemical entity.",
+            "nullCount": 7,
+            "uniqueCount": 94,
+            "sampleValues": [
+              "Elementary particle not affected by the strong force having a spin 1/2, a negative elementary charge",
+              "A dicarboxylic acid dianion resulting from the removal of a proton from both of the carboxylic acid ",
+              "A 2-oxo monocarboxylic acid anion that is the conjugate base of 3-methyl-2-oxobutanoic acid, arising",
+              "The conjugate base of gamma-amino-beta-hydroxybutyric acid arising from deprotonation of the carboxy",
+              "Any member of a group of fat-soluble retinoids produced via metabolism of provitamin A carotenoids t"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "dbXRefs",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of database cross-references for the chemical entity.",
+            "nullCount": 61,
+            "uniqueCount": 40,
+            "sampleValues": [
+              "['Wikipedia:Electron', 'KEGG:C05359']",
+              "['MetaCyc:2-HYDROXYGLUTARIC_ACID']",
+              "['MetaCyc:2-KETO-ISOVALERATE', 'KEGG:C00141']",
+              "['KEGG:C03678']",
+              "['MetaCyc:Vitamin-A', 'Wikipedia:Vitamin_A']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "parents",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of ChEBI identifiers representing the parent chemical entities in the hierarchy.",
+            "nullCount": 0,
+            "uniqueCount": 84,
+            "sampleValues": [
+              "['CHEBI_36338']",
+              "['CHEBI_132941', 'CHEBI_28965']",
+              "['CHEBI_191201', 'CHEBI_35179', 'CHEBI_58955', 'CHEBI_59836']",
+              "['CHEBI_36059', 'CHEBI_71666']",
+              "['CHEBI_35757']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "obsoleteTerms",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of obsolete ChEBI identifiers that previously referred to this chemical entity.",
+            "nullCount": 80,
+            "uniqueCount": 21,
+            "sampleValues": [
+              "['CHEBI_22318']",
+              "['CHEBI_13645']",
+              "['CHEBI_13699', 'CHEBI_2377']",
+              "['CHEBI_14061', 'CHEBI_23508', 'CHEBI_4050']",
+              "['CHEBI_14987', 'CHEBI_26462']"
+            ],
+            "uniqueValues": [
+              "['CHEBI_10876', 'CHEBI_12609', 'CHEBI_15065', 'CHE",
+              "None",
+              "['CHEBI_10795', 'CHEBI_10843', 'CHEBI_15104', 'CHE",
+              "['CHEBI_13761', 'CHEBI_22354', 'CHEBI_2594']",
+              "['CHEBI_14061', 'CHEBI_23508', 'CHEBI_4050']",
+              "['CHEBI_10745', 'CHEBI_13416', 'CHEBI_23833', 'CHE",
+              "['CHEBI_13699', 'CHEBI_2377']",
+              "['CHEBI_14987', 'CHEBI_26462']",
+              "['CHEBI_13072', 'CHEBI_13243', 'CHEBI_13797', 'CHE",
+              "['CHEBI_14276', 'CHEBI_24081']"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "interaction_evidence": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/interaction_evidence",
+      "dcterms:description": "This table from Open Targets contains interaction evidence data, detailing protein-protein interactions including detection methods, interacting proteins (targets A and B), species, interaction scores, and supporting publications (PubMed IDs). It includes information on the experimental methods used to detect these interactions and the biological roles of the interacting proteins.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 26,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "participantDetectionMethodA",
+            "datatype": "List(Struct({'miIdentifier': String, 'shortName': String}))",
+            "dcterms:description": "A list of methods used to detect participant A in the interaction, including MI identifier and short name.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "participantDetectionMethodB",
+            "datatype": "List(Struct({'miIdentifier': String, 'shortName': String}))",
+            "dcterms:description": "A list of methods used to detect participant B in the interaction, including MI identifier and short name.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "hostOrganismTaxId",
+            "datatype": "Int64",
+            "dcterms:description": "The NCBI taxonomy identifier of the host organism in which the interaction was observed.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetB",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene identifier of target B involved in the interaction.",
+            "nullCount": 7,
+            "uniqueCount": 42,
+            "sampleValues": [
+              "ENSG00000116191",
+              "ENSG00000116191",
+              "ENSG00000137460",
+              "ENSG00000131100",
+              "ENSG00000131100"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "evidenceScore",
+            "datatype": "Float64",
+            "dcterms:description": "A numerical score representing the confidence or reliability of the interaction evidence.",
+            "nullCount": 0,
+            "uniqueCount": 70,
+            "sampleValues": [
+              "0.134",
+              "0.045",
+              "0.128",
+              "0.049",
+              "0.118"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "expansionMethodShortName",
+            "datatype": "String",
+            "dcterms:description": "The short name of the method used to expand the interaction.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "hostOrganismScientificName",
+            "datatype": "String",
+            "dcterms:description": "The scientific name of the host organism in which the interaction was observed.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intBBiologicalRole",
+            "datatype": "String",
+            "dcterms:description": "The biological role of interaction participant B, often 'unspecified role'.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "unspecified role",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role"
+            ],
+            "uniqueValues": [
+              "unspecified role"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionResources",
+            "datatype": "Struct({'databaseVersion': String, 'sourceDatabase': String})",
+            "dcterms:description": "Information about the database and version from which the interaction data was sourced.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "{'databaseVersion': '12', 'sourceDatabase': 'string'}",
+              "{'databaseVersion': '12', 'sourceDatabase': 'string'}",
+              "{'databaseVersion': '12', 'sourceDatabase': 'string'}",
+              "{'databaseVersion': '12', 'sourceDatabase': 'string'}",
+              "{'databaseVersion': '12', 'sourceDatabase': 'string'}"
+            ],
+            "uniqueValues": [
+              "{'databaseVersion': '12', 'sourceDatabase': 'strin"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionDetectionMethodShortName",
+            "datatype": "String",
+            "dcterms:description": "The short name of the experimental or computational method used to detect the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 6,
+            "sampleValues": [
+              "experimental",
+              "coexpression",
+              "experimental",
+              "experimental",
+              "coexpression"
+            ],
+            "uniqueValues": [
+              "fusion",
+              "homology",
+              "database",
+              "coexpression",
+              "textmining",
+              "experimental"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intA",
+            "datatype": "String",
+            "dcterms:description": "Ensembl protein identifier of interaction participant A.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "ENSP00000000233",
+              "ENSP00000000233",
+              "ENSP00000000233",
+              "ENSP00000000233",
+              "ENSP00000000233"
+            ],
+            "uniqueValues": [
+              "ENSP00000000233"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intBSource",
+            "datatype": "String",
+            "dcterms:description": "The source database of interaction participant B, typically 'ensembl_protein'.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "ensembl_protein",
+              "ensembl_protein",
+              "ensembl_protein",
+              "ensembl_protein",
+              "ensembl_protein"
+            ],
+            "uniqueValues": [
+              "ensembl_protein"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionTypeMiIdentifier",
+            "datatype": "String",
+            "dcterms:description": "The MI identifier for the type of interaction.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "speciesB",
+            "datatype": "Struct({'mnemonic': String, 'scientificName': String, 'taxonId': Int64})",
+            "dcterms:description": "Information about species B, including mnemonic, scientific name, and NCBI taxon identifier.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}"
+            ],
+            "uniqueValues": [
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapi"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "expansionMethodMiIdentifier",
+            "datatype": "String",
+            "dcterms:description": "The MI identifier for the method used to expand the interaction.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionTypeShortName",
+            "datatype": "String",
+            "dcterms:description": "The short name of the type of interaction.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionIdentifier",
+            "datatype": "String",
+            "dcterms:description": "A unique identifier for the interaction.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "hostOrganismTissue",
+            "datatype": "Struct({'fullName': String, 'shortName': String, 'xrefs': List(String)})",
+            "dcterms:description": "Information about the tissue in which the interaction was observed, including full name, short name, and xrefs.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "speciesA",
+            "datatype": "Struct({'mnemonic': String, 'scientificName': String, 'taxonId': Int64})",
+            "dcterms:description": "Information about species A, including mnemonic, scientific name, and NCBI taxon identifier.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}",
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapiens', 'taxonId': 9606}"
+            ],
+            "uniqueValues": [
+              "{'mnemonic': 'human', 'scientificName': 'Homo sapi"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intASource",
+            "datatype": "String",
+            "dcterms:description": "The source database of interaction participant A, typically 'ensembl_protein'.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "ensembl_protein",
+              "ensembl_protein",
+              "ensembl_protein",
+              "ensembl_protein",
+              "ensembl_protein"
+            ],
+            "uniqueValues": [
+              "ensembl_protein"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intB",
+            "datatype": "String",
+            "dcterms:description": "Ensembl protein identifier of interaction participant B.",
+            "nullCount": 0,
+            "uniqueCount": 44,
+            "sampleValues": [
+              "ENSP00000356607",
+              "ENSP00000356607",
+              "ENSP00000427567",
+              "ENSP00000253413",
+              "ENSP00000253413"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "pubmedId",
+            "datatype": "String",
+            "dcterms:description": "The PubMed identifier (PMID) of the publication that reports the interaction.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "intABiologicalRole",
+            "datatype": "String",
+            "dcterms:description": "The biological role of interaction participant A, often 'unspecified role'.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "unspecified role",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role",
+              "unspecified role"
+            ],
+            "uniqueValues": [
+              "unspecified role"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionScore",
+            "datatype": "Float64",
+            "dcterms:description": "A numerical score representing the overall confidence or reliability of the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 38,
+            "sampleValues": [
+              "0.173",
+              "0.173",
+              "0.154",
+              "0.151",
+              "0.151"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetA",
+            "datatype": "String",
+            "dcterms:description": "Ensembl gene identifier of target A involved in the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "ENSG00000004059",
+              "ENSG00000004059",
+              "ENSG00000004059",
+              "ENSG00000004059",
+              "ENSG00000004059"
+            ],
+            "uniqueValues": [
+              "ENSG00000004059"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "interactionDetectionMethodMiIdentifier",
+            "datatype": "String",
+            "dcterms:description": "The MI identifier for the experimental or computational method used to detect the interaction.",
+            "nullCount": 0,
+            "uniqueCount": 6,
+            "sampleValues": [
+              "MI:0591",
+              "MI:2231",
+              "MI:0591",
+              "MI:0591",
+              "MI:2231"
+            ],
+            "uniqueValues": [
+              "",
+              "MI:2231",
+              "MI:0591",
+              "MI:0036",
+              "MI:2163",
+              "MI:0110"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "l2g_prediction": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/l2g_prediction",
+      "dcterms:description": "The `l2g_prediction` table in the `opentargets` brick contains study results data, specifically locus-to-gene (L2G) predictions, including a score and contributing features, for each study-locus-gene association. The table provides evidence linking genetic variants to target genes, incorporating a SHAP base value to explain the model's output.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 5,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "studyLocusId",
+            "datatype": "String",
+            "dcterms:description": "The unique identifier of the study locus associated with the gene-locus pair.",
+            "nullCount": 0,
+            "uniqueCount": 97,
+            "sampleValues": [
+              "000317dbbf016558fe1dc3bd764ce92a",
+              "000317dbbf016558fe1dc3bd764ce92a",
+              "0004c902d0919652db2bec21eae6b5c0",
+              "00050f2c3b0b5f3ce57f59a6c0f71ad0",
+              "00054cbf4912bfa67a63f0d9551d0e24"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "geneId",
+            "datatype": "String",
+            "dcterms:description": "The Ensembl gene identifier (ENSG) for the gene associated with the locus.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "ENSG00000213973",
+              "ENSG00000268696",
+              "ENSG00000060718",
+              "ENSG00000221840",
+              "ENSG00000174165"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "score",
+            "datatype": "Float64",
+            "dcterms:description": "A confidence score representing the strength of the gene-locus association, ranging from 0 to 1.",
+            "nullCount": 0,
+            "uniqueCount": 93,
+            "sampleValues": [
+              "0.09233041607458957",
+              "0.09756105665152784",
+              "0.8973928782473661",
+              "0.7995951032683815",
+              "0.0505950306301744"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "features",
+            "datatype": "List(Struct({'name': String, 'value': Float32, 'shapValue': Float32}))",
+            "dcterms:description": "A list of features used in the prediction model, including their name, value, and SHAP value, which indicates the feature's contribution to the prediction.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[{'name': 'eQtlColocClppMaximum', 'value': 0.0, 'shapValue': -0.0022317063994705677}, {'name': 'pQtl",
+              "[{'name': 'eQtlColocClppMaximum', 'value': 0.0, 'shapValue': -0.0022646302822977304}, {'name': 'pQtl",
+              "[{'name': 'eQtlColocClppMaximum', 'value': 0.0031549292616546154, 'shapValue': 0.002813620027154684}",
+              "[{'name': 'eQtlColocClppMaximum', 'value': 0.0, 'shapValue': -0.002754374174401164}, {'name': 'pQtlC",
+              "[{'name': 'eQtlColocClppMaximum', 'value': 0.03908921778202057, 'shapValue': 0.013964858837425709}, "
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "shapBaseValue",
+            "datatype": "Float32",
+            "dcterms:description": "The average prediction output over the entire dataset, used as a baseline for interpreting SHAP values.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "0.05606098845601082",
+              "0.05606098845601082",
+              "0.05606098845601082",
+              "0.05606098845601082",
+              "0.05606098845601082"
+            ],
+            "uniqueValues": [
+              "0.05606098845601082"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "literature_vector": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/literature_vector",
+      "dcterms:description": "This table contains precomputed word embeddings (vectors) derived from scientific literature, categorized by relevant biomedical concepts. Each row represents a word, its normalized form, and its corresponding vector representation for use in text mining and natural language processing tasks.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 4,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "category",
+            "datatype": "String",
+            "dcterms:description": "The semantic category of the entity represented by the 'word' column, such as 'disease', 'drug', or 'target'.",
+            "nullCount": 0,
+            "uniqueCount": 3,
+            "sampleValues": [
+              "disease",
+              "drug",
+              "target",
+              "disease",
+              "disease"
+            ],
+            "uniqueValues": [
+              "disease",
+              "target",
+              "drug"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "word",
+            "datatype": "String",
+            "dcterms:description": "The identifier of the entity, such as an EFO ID for a disease, a ChEMBL ID for a drug, or an Ensembl ID for a target.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "EFO_0004540",
+              "CHEMBL3976807",
+              "ENSG00000172410",
+              "MONDO_0017258",
+              "HP_0001998"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "norm",
+            "datatype": "Float64",
+            "dcterms:description": "The L2 norm of the vector representation of the entity, indicating the magnitude of the vector.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "2.7303532930086827",
+              "0.7645140043139698",
+              "2.3011118960333525",
+              "1.6524006422537116",
+              "3.3362606631584875"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "vector",
+            "datatype": "List(Float64)",
+            "dcterms:description": "A list of floating-point numbers representing the vector embedding of the entity in a high-dimensional space, capturing its semantic relationships with other entities.",
+            "nullCount": 0,
+            "uniqueCount": 100,
+            "sampleValues": [
+              "[0.3196187913417816, 0.02971377968788147, 0.36301523447036743, 0.03247270733118057, 0.07448802143335",
+              "[-0.050422303378582, -0.034203920513391495, -0.008006487973034382, 0.0465584360063076, -0.0264188591",
+              "[-0.3739902377128601, -0.08185923844575882, 0.07983185350894928, 0.06534133851528168, -0.06142285466",
+              "[-0.1676914244890213, 0.3567250967025757, 0.22119152545928955, -0.02414432354271412, 0.1102867797017",
+              "[-0.5576162934303284, -0.23297971487045288, -0.2859864830970764, 0.01637875847518444, 0.384944766759"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "known_drug": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/known_drug",
+      "dcterms:description": "This table from OpenTargets contains information about known drugs, including their identifiers, target proteins, associated diseases, development phase, approval status, and links to external resources. It also includes drug and target properties such as names, synonyms, mechanism of action, and target class.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 17,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "drugId",
+            "datatype": "String",
+            "dcterms:description": "The ChEMBL identifier of the drug.",
+            "nullCount": 0,
+            "uniqueCount": 40,
+            "sampleValues": [
+              "CHEMBL265502",
+              "CHEMBL413376",
+              "CHEMBL52440",
+              "CHEMBL655",
+              "CHEMBL655"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetId",
+            "datatype": "String",
+            "dcterms:description": "The Ensembl identifier of the target protein.",
+            "nullCount": 0,
+            "uniqueCount": 63,
+            "sampleValues": [
+              "ENSG00000113578",
+              "ENSG00000113578",
+              "ENSG00000147955",
+              "ENSG00000011677",
+              "ENSG00000113327"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "diseaseId",
+            "datatype": "String",
+            "dcterms:description": "The identifier of the disease, using EFO or DOID ontology.",
+            "nullCount": 0,
+            "uniqueCount": 4,
+            "sampleValues": [
+              "DOID_10113",
+              "DOID_10113",
+              "DOID_10113",
+              "DOID_10113",
+              "DOID_10113"
+            ],
+            "uniqueValues": [
+              "EFO_0000094",
+              "DOID_10113",
+              "DOID_7551",
+              "DOID_13406"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "phase",
+            "datatype": "Float64",
+            "dcterms:description": "The clinical trial phase of the drug for the given target and disease, represented as a numerical value.",
+            "nullCount": 0,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "3.0",
+              "3.0",
+              "1.0",
+              "1.0",
+              "1.0"
+            ],
+            "uniqueValues": [
+              "0.5",
+              "1.0",
+              "2.0",
+              "3.0",
+              "4.0"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "status",
+            "datatype": "String",
+            "dcterms:description": "The status of the clinical trial for the drug-target-disease association.",
+            "nullCount": 5,
+            "uniqueCount": 8,
+            "sampleValues": [
+              "Completed",
+              "Completed",
+              "Completed",
+              "Completed",
+              "Completed"
+            ],
+            "uniqueValues": [
+              "Recruiting",
+              "Terminated",
+              "Completed",
+              "None",
+              "Not yet recruiting",
+              "Unknown status",
+              "Active, not recruiting",
+              "Withdrawn"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "urls",
+            "datatype": "List(Struct({'niceName': String, 'url': String}))",
+            "dcterms:description": "A list of URLs providing additional information about the drug, including the website name and the URL.",
+            "nullCount": 0,
+            "uniqueCount": 36,
+            "sampleValues": [
+              "[{'niceName': 'ATC', 'url': 'https://www.whocc.no/atc_ddd_index/?code=P01CX02'}]",
+              "[{'niceName': 'ATC', 'url': 'https://www.whocc.no/atc_ddd_index/?code=P01CX02'}]",
+              "[{'niceName': 'ClinicalTrials', 'url': 'https://clinicaltrials.gov/study/NCT05947604'}]",
+              "[{'niceName': 'ClinicalTrials', 'url': 'https://clinicaltrials.gov/study/NCT05947604'}]",
+              "[{'niceName': 'ClinicalTrials', 'url': 'https://clinicaltrials.gov/study/NCT05947604'}]"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "ancestors",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of ancestor terms for the disease in an ontology hierarchy.",
+            "nullCount": 0,
+            "uniqueCount": 4,
+            "sampleValues": [
+              "['MONDO_0002428', 'EFO_0001067', 'EFO_0005741']",
+              "['MONDO_0002428', 'EFO_0001067', 'EFO_0005741']",
+              "['MONDO_0002428', 'EFO_0001067', 'EFO_0005741']",
+              "['MONDO_0002428', 'EFO_0001067', 'EFO_0005741']",
+              "['MONDO_0002428', 'EFO_0001067', 'EFO_0005741']"
+            ],
+            "uniqueValues": [
+              "['EFO_0005741', 'EFO_0000512', 'MONDO_0000314', 'E",
+              "['MONDO_0002428', 'EFO_0001067', 'EFO_0005741']",
+              "['MONDO_0004095', 'EFO_0000540', 'EFO_0000616', 'E",
+              "['MONDO_0017026', 'MONDO_0019338', 'EFO_0004244', "
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "label",
+            "datatype": "String",
+            "dcterms:description": "The disease label associated with the drug-target interaction.",
+            "nullCount": 0,
+            "uniqueCount": 4,
+            "sampleValues": [
+              "trypanosomiasis",
+              "trypanosomiasis",
+              "trypanosomiasis",
+              "trypanosomiasis",
+              "trypanosomiasis"
+            ],
+            "uniqueValues": [
+              "gonorrhea",
+              "trypanosomiasis",
+              "pulmonary sarcoidosis",
+              "B-cell acute lymphoblastic leukemia"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "approvedSymbol",
+            "datatype": "String",
+            "dcterms:description": "The approved gene symbol for the target protein.",
+            "nullCount": 0,
+            "uniqueCount": 63,
+            "sampleValues": [
+              "FGF1",
+              "FGF1",
+              "SIGMAR1",
+              "GABRA3",
+              "GABRG2"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "approvedName",
+            "datatype": "String",
+            "dcterms:description": "The approved name of the target protein.",
+            "nullCount": 0,
+            "uniqueCount": 63,
+            "sampleValues": [
+              "fibroblast growth factor 1",
+              "fibroblast growth factor 1",
+              "sigma non-opioid intracellular receptor 1",
+              "gamma-aminobutyric acid type A receptor subunit alpha3",
+              "gamma-aminobutyric acid type A receptor subunit gamma2"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetClass",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of protein classes the target belongs to.",
+            "nullCount": 0,
+            "uniqueCount": 12,
+            "sampleValues": [
+              "['Secreted protein']",
+              "['Secreted protein']",
+              "['Membrane receptor']",
+              "['Ion channel']",
+              "['Ion channel']"
+            ],
+            "uniqueValues": [
+              "['Transcription factor']",
+              "['Adhesion']",
+              "['Structural protein']",
+              "['Unclassified protein', 'Enzyme']",
+              "['Ion channel']",
+              "['Unclassified protein']",
+              "['Unclassified protein', 'Enzyme', 'Other cytosoli",
+              "['Surface antigen']",
+              "['Secreted protein']",
+              "['Membrane receptor']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "prefName",
+            "datatype": "String",
+            "dcterms:description": "The preferred name of the drug.",
+            "nullCount": 0,
+            "uniqueCount": 40,
+            "sampleValues": [
+              "SURAMIN",
+              "SURAMIN HEXASODIUM",
+              "DEXTROMETHORPHAN",
+              "MIDAZOLAM",
+              "MIDAZOLAM"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "tradeNames",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of trade names for the drug.",
+            "nullCount": 0,
+            "uniqueCount": 30,
+            "sampleValues": [
+              "[]",
+              "[]",
+              "[]",
+              "['Midazolam in 0.8% sodium chloride', 'Midazolam in 0.9% sodium chloride', 'Nayzilam']",
+              "['Midazolam in 0.8% sodium chloride', 'Midazolam in 0.9% sodium chloride', 'Nayzilam']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "synonyms",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of synonyms for the drug.",
+            "nullCount": 0,
+            "uniqueCount": 40,
+            "sampleValues": [
+              "['FARMA-939', 'Farma', 'Fourneau', 'Metaret', 'NSC-34936', 'Naganol', 'Suramin', 'Suramine']",
+              "['BAY-205', 'BAYER-205', 'CI-1003', 'FOURNEAU 309', 'FOURNEAU-309', 'NF-060', 'NSC-758165', 'Naganan",
+              "['Dextromethorphan', 'Dextromethorphane', 'Dextrometorfano', 'Dimetane-DX', 'NSC-751452']",
+              "['Midazolam', 'Midazolam civ', 'USL-261', 'USL261']",
+              "['Midazolam', 'Midazolam civ', 'USL-261', 'USL261']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "drugType",
+            "datatype": "String",
+            "dcterms:description": "The type of drug (e.g., small molecule, antibody).",
+            "nullCount": 0,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "Small molecule",
+              "Small molecule",
+              "Small molecule",
+              "Small molecule",
+              "Small molecule"
+            ],
+            "uniqueValues": [
+              "Antibody",
+              "Antibody drug conjugate",
+              "Small molecule",
+              "Protein",
+              "Cell"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "mechanismOfAction",
+            "datatype": "String",
+            "dcterms:description": "The mechanism of action of the drug.",
+            "nullCount": 0,
+            "uniqueCount": 35,
+            "sampleValues": [
+              "Acidic fibroblast growth factor inhibitor",
+              "Acidic fibroblast growth factor inhibitor",
+              "Sigma opioid receptor agonist",
+              "GABA-A receptor; anion channel positive allosteric modulator",
+              "GABA-A receptor; anion channel positive allosteric modulator"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetName",
+            "datatype": "String",
+            "dcterms:description": "The name of the target protein.",
+            "nullCount": 0,
+            "uniqueCount": 32,
+            "sampleValues": [
+              "Acidic fibroblast growth factor",
+              "Acidic fibroblast growth factor",
+              "Sigma opioid receptor",
+              "GABA-A receptor; anion channel",
+              "GABA-A receptor; anion channel"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    },
+    "pharmacogenomics": {
+      "@type": "csvw:Table",
+      "@id": "https://brickyard.biobricks.ai/brick/opentargets/table/pharmacogenomics",
+      "dcterms:description": "The `pharmacogenomics` table from Open Targets contains pharmacogenomic study results, linking genetic variants and genotypes to drug responses and target interactions. It includes information on evidence level, directionality of effect, and supporting literature for these associations.",
+      "tableSchema": {
+        "@type": "csvw:Schema",
+        "columnCount": 22,
+        "columns": [
+          {
+            "@type": "csvw:Column",
+            "columnName": "datasourceId",
+            "datatype": "String",
+            "dcterms:description": "The source database identifier for the pharmacogenomic evidence.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "pharmgkb",
+              "pharmgkb",
+              "pharmgkb",
+              "pharmgkb",
+              "pharmgkb"
+            ],
+            "uniqueValues": [
+              "pharmgkb"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "datasourceVersion",
+            "datatype": "String",
+            "dcterms:description": "The version of the source database for the pharmacogenomic evidence.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "2025-05-05",
+              "2025-05-05",
+              "2025-05-05",
+              "2025-05-05",
+              "2025-05-05"
+            ],
+            "uniqueValues": [
+              "2025-05-05"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "datatypeId",
+            "datatype": "String",
+            "dcterms:description": "The type of data represented by the pharmacogenomic evidence.",
+            "nullCount": 0,
+            "uniqueCount": 1,
+            "sampleValues": [
+              "clinical_annotation",
+              "clinical_annotation",
+              "clinical_annotation",
+              "clinical_annotation",
+              "clinical_annotation"
+            ],
+            "uniqueValues": [
+              "clinical_annotation"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "directionality",
+            "datatype": "String",
+            "dcterms:description": "The direction of the effect observed in the pharmacogenomic evidence.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "evidenceLevel",
+            "datatype": "String",
+            "dcterms:description": "The level of evidence supporting the pharmacogenomic association.",
+            "nullCount": 0,
+            "uniqueCount": 3,
+            "sampleValues": [
+              "3",
+              "3",
+              "3",
+              "3",
+              "4"
+            ],
+            "uniqueValues": [
+              "1A",
+              "3",
+              "4"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "genotype",
+            "datatype": "String",
+            "dcterms:description": "The genotype associated with the pharmacogenomic effect.",
+            "nullCount": 0,
+            "uniqueCount": 11,
+            "sampleValues": [
+              "AA",
+              "GG",
+              "GG",
+              "GG",
+              "GG"
+            ],
+            "uniqueValues": [
+              "GG",
+              "CG",
+              "ATGA/ATGA",
+              "CT",
+              "GT",
+              "CC",
+              "AC",
+              "AG",
+              "TT",
+              "AA"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "genotypeAnnotationText",
+            "datatype": "String",
+            "dcterms:description": "A textual description of the genotype and its annotation.",
+            "nullCount": 0,
+            "uniqueCount": 67,
+            "sampleValues": [
+              "Alcohol-dependent patients with the AA genotype may have decreased stress-induced alcohol cravings a",
+              "Patients with the rs3745274 GG genotype may have increased methadone dose requirements as compared t",
+              "Patients with lupus nephritis and the rs3745274 GG genotype may have a decreased response to cycloph",
+              "Patients under general anaesthesia with genotypes GG may need increased dose of propofol as compared",
+              "Individuals with HIV and the GG genotype may have a decreased risk of Stevens-Johnson Syndrome/Toxic"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "genotypeId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the genotype.",
+            "nullCount": 0,
+            "uniqueCount": 61,
+            "sampleValues": [
+              "5_76968168_A_A,A",
+              "19_41006936_G_G,G",
+              "19_41006936_G_G,G",
+              "19_41006936_G_G,G",
+              "19_41006936_G_G,G"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "haplotypeFromSourceId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the haplotype from the source database.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "haplotypeId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the haplotype.",
+            "nullCount": 100,
+            "uniqueCount": 1,
+            "uniqueValues": [
+              "None"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "literature",
+            "datatype": "List(String)",
+            "dcterms:description": "A list of PubMed IDs (PMIDs) referencing the pharmacogenomic evidence.",
+            "nullCount": 0,
+            "uniqueCount": 63,
+            "sampleValues": [
+              "['21039637']",
+              "['34380995', '34910759', '21902500', '21790905', '25556837', '30907440']",
+              "['37611146']",
+              "['26141406']",
+              "['28819312', '23774940', '21824325', '21505298', '28689274', '28689274']"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "pgxCategory",
+            "datatype": "String",
+            "dcterms:description": "The category of pharmacogenomic effect, such as toxicity, dosage, or efficacy.",
+            "nullCount": 0,
+            "uniqueCount": 5,
+            "sampleValues": [
+              "toxicity",
+              "dosage",
+              "efficacy",
+              "dosage",
+              "toxicity"
+            ],
+            "uniqueValues": [
+              "toxicity",
+              "efficacy",
+              "dosage",
+              "other",
+              "metabolism/pk"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "phenotypeFromSourceId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the phenotype from the source database.",
+            "nullCount": 99,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "EFO_0000480"
+            ],
+            "uniqueValues": [
+              "None",
+              "EFO_0000480"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "phenotypeText",
+            "datatype": "String",
+            "dcterms:description": "A textual description of the phenotype associated with the pharmacogenomic effect.",
+            "nullCount": 1,
+            "uniqueCount": 67,
+            "sampleValues": [
+              "decreased stress-induced alcohol cravings",
+              "increased methadone dose requirements",
+              "decreased response to cyclophosphamide",
+              "increased dose of propofol",
+              "decreased risk of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis (SJS/TEN) or Drug Reaction wit"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "variantAnnotation",
+            "datatype": "List(Struct({'baseAlleleOrGenotype': String, 'comparisonAlleleOrGenotype': String, 'directionality': String, 'effect': String, 'effectDescription': String, 'effectType': String, 'entity': String, 'literature': String}))",
+            "dcterms:description": "Annotations describing the effect of the variant on the phenotype.",
+            "nullCount": 39,
+            "uniqueCount": 38,
+            "sampleValues": [
+              "[{'baseAlleleOrGenotype': 'GG + GT', 'comparisonAlleleOrGenotype': 'TT', 'directionality': 'increase",
+              "[{'baseAlleleOrGenotype': 'TT', 'comparisonAlleleOrGenotype': 'CC', 'directionality': 'decreased', '",
+              "[{'baseAlleleOrGenotype': 'GG', 'comparisonAlleleOrGenotype': 'AA + AG', 'directionality': 'decrease",
+              "[{'baseAlleleOrGenotype': 'GG', 'comparisonAlleleOrGenotype': 'AA + AG', 'directionality': 'decrease",
+              "[{'baseAlleleOrGenotype': 'GG', 'comparisonAlleleOrGenotype': 'AA + AG', 'directionality': 'decrease"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "studyId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the study providing the pharmacogenomic evidence.",
+            "nullCount": 0,
+            "uniqueCount": 66,
+            "sampleValues": [
+              "1450812912",
+              "1183702975",
+              "1452474573",
+              "1444933020",
+              "1448635585"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "targetFromSourceId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the target gene from the source database (e.g., Ensembl ID).",
+            "nullCount": 5,
+            "uniqueCount": 48,
+            "sampleValues": [
+              "ENSG00000145708",
+              "ENSG00000197408",
+              "ENSG00000197408",
+              "ENSG00000197408",
+              "ENSG00000197408"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "variantFunctionalConsequenceId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the functional consequence of the variant (Sequence Ontology ID).",
+            "nullCount": 5,
+            "uniqueCount": 10,
+            "sampleValues": [
+              "SO_0002073",
+              "SO_0002073",
+              "SO_0002073",
+              "SO_0002073",
+              "SO_0002073"
+            ],
+            "uniqueValues": [
+              "SO_0001627",
+              "SO_0001819",
+              "None",
+              "SO_0001575",
+              "SO_0001583",
+              "SO_0002073",
+              "SO_0001631",
+              "SO_0001624",
+              "SO_0001587",
+              "SO_0001632"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "variantRsId",
+            "datatype": "String",
+            "dcterms:description": "The dbSNP identifier (rsID) for the variant.",
+            "nullCount": 0,
+            "uniqueCount": 59,
+            "sampleValues": [
+              "rs10055255",
+              "rs3745274",
+              "rs3745274",
+              "rs3745274",
+              "rs3745274"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "variantId",
+            "datatype": "String",
+            "dcterms:description": "The identifier for the variant (e.g., chromosome_position_reference_alternate).",
+            "nullCount": 35,
+            "uniqueCount": 41,
+            "sampleValues": [
+              "1_97450058_C_T",
+              "6_151842246_A_G",
+              "6_151842246_A_G",
+              "6_151842246_A_G",
+              "1_108937356_G_T"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "isDirectTarget",
+            "datatype": "Boolean",
+            "dcterms:description": "Indicates whether the target is a direct target of the drug.",
+            "nullCount": 0,
+            "uniqueCount": 2,
+            "sampleValues": [
+              "False",
+              "False",
+              "False",
+              "False",
+              "False"
+            ],
+            "uniqueValues": [
+              "False",
+              "True"
+            ]
+          },
+          {
+            "@type": "csvw:Column",
+            "columnName": "drugs",
+            "datatype": "List(Struct({'drugFromSource': String, 'drugId': String}))",
+            "dcterms:description": "A list of drugs associated with the pharmacogenomic effect, including the drug name from the source and drug identifier.",
+            "nullCount": 0,
+            "uniqueCount": 62,
+            "sampleValues": [
+              "[{'drugFromSource': 'ethanol', 'drugId': None}]",
+              "[{'drugFromSource': 'methadone', 'drugId': 'CHEMBL651'}]",
+              "[{'drugFromSource': 'cyclophosphamide', 'drugId': 'CHEMBL1200796'}]",
+              "[{'drugFromSource': 'propofol', 'drugId': 'CHEMBL526'}]",
+              "[{'drugFromSource': 'nevirapine', 'drugId': 'CHEMBL57'}]"
+            ]
+          }
+        ],
+        "rowCountSample": 100
+      }
+    }
+  },
+  "readiness": "needs_review",
+  "readinessNote": "Metadata has not been reviewed; provenance not documented",
+  "prov:wasEnrichedBy": {
+    "@type": "prov:Activity",
+    "prov:wasAssociatedWith": "BrickYard Metadata Enrichment (Gemini 2.0 Flash)",
+    "prov:endedAtTime": "2026-01-26T03:53:46.440177+00:00"
+  }
+}

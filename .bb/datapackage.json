@@ -1,0 +1,2692 @@
+{
+  "@context": "http://www.w3.org/ns/csvw",
+  "profile": "tabular-data-package",
+  "name": "opentargets",
+  "title": "Open Targets Platform",
+  "description": "Open Targets Platform data downloads (FTP latest/output), one partitioned-parquet directory per dataset.",
+  "note": "Each 'url' is a DIRECTORY of Spark-style part-*.parquet files (partitioned dataset), not a single file.",
+  "tables": [
+    {
+      "url": "brick/association_by_datasource_direct.parquet",
+      "name": "association_by_datasource_direct",
+      "format": "parquet-directory",
+      "parquetPartFiles": 20,
+      "rowCount": 4027448,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "datatypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datasourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "evidenceCount",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/association_by_datasource_indirect.parquet",
+      "name": "association_by_datasource_indirect",
+      "format": "parquet-directory",
+      "parquetPartFiles": 20,
+      "rowCount": 12729733,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "datatypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datasourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "evidenceCount",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/association_by_datatype_direct.parquet",
+      "name": "association_by_datatype_direct",
+      "format": "parquet-directory",
+      "parquetPartFiles": 20,
+      "rowCount": 3993851,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datatypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "evidenceCount",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/association_by_datatype_indirect.parquet",
+      "name": "association_by_datatype_indirect",
+      "format": "parquet-directory",
+      "parquetPartFiles": 20,
+      "rowCount": 12341457,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datatypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "evidenceCount",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/association_by_overall_indirect.parquet",
+      "name": "association_by_overall_indirect",
+      "format": "parquet-directory",
+      "parquetPartFiles": 20,
+      "rowCount": 10563905,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "evidenceCount",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/association_overall_direct.parquet",
+      "name": "association_overall_direct",
+      "format": "parquet-directory",
+      "parquetPartFiles": 20,
+      "rowCount": 3821736,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "evidenceCount",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/biosample.parquet",
+      "name": "biosample",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 33245,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "biosampleId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "biosampleName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "description",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "xrefs",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "synonyms",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "parents",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "ancestors",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "children",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "descendants",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/colocalisation_coloc.parquet",
+      "name": "colocalisation_coloc",
+      "format": "parquet-directory",
+      "parquetPartFiles": 25,
+      "rowCount": 38561709,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "leftStudyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "rightStudyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "chromosome",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "rightStudyType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "numberColocalisingVariants",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "h0",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "h1",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "h2",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "h3",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "h4",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "colocalisationMethod",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "betaRatioSignAverage",
+            "datatype": "number",
+            "arrowType": "double"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/colocalisation_ecaviar.parquet",
+      "name": "colocalisation_ecaviar",
+      "format": "parquet-directory",
+      "parquetPartFiles": 25,
+      "rowCount": 75407692,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "leftStudyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "rightStudyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "chromosome",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "rightStudyType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "numberColocalisingVariants",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "clpp",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "colocalisationMethod",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "betaRatioSignAverage",
+            "datatype": "number",
+            "arrowType": "double"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/credible_set.parquet",
+      "name": "credible_set",
+      "format": "parquet-directory",
+      "parquetPartFiles": 25,
+      "rowCount": 2833758,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "studyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "chromosome",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "position",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "region",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "beta",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "zScore",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "pValueMantissa",
+            "datatype": "number",
+            "arrowType": "float"
+          },
+          {
+            "name": "pValueExponent",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "effectAlleleFrequencyFromSource",
+            "datatype": "number",
+            "arrowType": "float"
+          },
+          {
+            "name": "standardError",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "subStudyDescription",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "qualityControls",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "finemappingMethod",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "credibleSetIndex",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "credibleSetlog10BF",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "purityMeanR2",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "purityMinR2",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "locusStart",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "locusEnd",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "sampleSize",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "ldSet",
+            "datatype": "string",
+            "arrowType": "list<element: struct<tagVariantId: string, r2Overall: double>>"
+          },
+          {
+            "name": "locus",
+            "datatype": "string",
+            "arrowType": "list<element: struct<is95CredibleSet: bool, is99CredibleSet: bool, logBF: double, posteriorProbability: double, variantId: string, pValueMantissa: float, pValueExponent: int32, beta: double, standardError: double, r2Overall: double>>"
+          },
+          {
+            "name": "confidence",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "isTransQtl",
+            "datatype": "boolean",
+            "arrowType": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/disease.parquet",
+      "name": "disease",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 38959,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "code",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "name",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "description",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "dbXRefs",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "parents",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "synonyms",
+            "datatype": "string",
+            "arrowType": "struct<hasExactSynonym: large_list<element: large_string>, hasRelatedSynonym: large_list<element: large_string>, hasNarrowSynonym: large_list<element: large_string>, hasBroadSynonym: large_list<element: large_string>>"
+          },
+          {
+            "name": "obsoleteTerms",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "obsoleteXRefs",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "children",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "ancestors",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "therapeuticAreas",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "descendants",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "ontology",
+            "datatype": "string",
+            "arrowType": "struct<isTherapeuticArea: bool, leaf: bool, sources: struct<url: large_string, name: large_string>>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/disease_hpo.parquet",
+      "name": "disease_hpo",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 31115,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "name",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "description",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "dbXRefs",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "parents",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          },
+          {
+            "name": "obsoleteTerms",
+            "datatype": "string",
+            "arrowType": "large_list<element: large_string>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/disease_phenotype.parquet",
+      "name": "disease_phenotype",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 157611,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "disease",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "phenotype",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "evidence",
+            "datatype": "string",
+            "arrowType": "large_list<element: struct<aspect: large_string, bioCuration: large_string, diseaseFromSourceId: large_string, diseaseFromSource: large_string, diseaseName: large_string, evidenceType: large_string, frequency: large_string, modifiers: large_list<element: large_string>, onset: large_list<element: large_string>, qualifier: large_string, qualifierNot: bool, references: large_list<element: large_string>, sex: large_string, resource: large_string>>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/drug_indication.parquet",
+      "name": "drug_indication",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 9678,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "indications",
+            "datatype": "string",
+            "arrowType": "list<element: struct<disease: string, efoName: string, references: list<element: struct<source: string, ids: list<element: string not null> not null> not null> not null, maxPhaseForIndication: double> not null>"
+          },
+          {
+            "name": "approvedIndications",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "indicationCount",
+            "datatype": "integer",
+            "arrowType": "int32"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/drug_mechanism_of_action.parquet",
+      "name": "drug_mechanism_of_action",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 6332,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "actionType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "mechanismOfAction",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "chemblIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "targetName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targets",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "references",
+            "datatype": "string",
+            "arrowType": "list<element: struct<source: string, ids: list<element: string not null> not null, urls: list<element: string not null> not null> not null>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/drug_molecule.parquet",
+      "name": "drug_molecule",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 18081,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "canonicalSmiles",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "inchiKey",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "drugType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "blackBoxWarning",
+            "datatype": "boolean",
+            "arrowType": "bool"
+          },
+          {
+            "name": "name",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "yearOfFirstApproval",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "maximumClinicalTrialPhase",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "parentId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "hasBeenWithdrawn",
+            "datatype": "boolean",
+            "arrowType": "bool"
+          },
+          {
+            "name": "isApproved",
+            "datatype": "boolean",
+            "arrowType": "bool"
+          },
+          {
+            "name": "tradeNames",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "synonyms",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "crossReferences",
+            "datatype": "string",
+            "arrowType": "list<element: struct<source: string not null, ids: list<element: string>> not null>"
+          },
+          {
+            "name": "childChemblIds",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "linkedDiseases",
+            "datatype": "string",
+            "arrowType": "struct<rows: list<element: string> not null, count: int32 not null>"
+          },
+          {
+            "name": "linkedTargets",
+            "datatype": "string",
+            "arrowType": "struct<rows: list<element: string not null> not null, count: int32 not null>"
+          },
+          {
+            "name": "description",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/drug_warning.parquet",
+      "name": "drug_warning",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 1676,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chemblIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "toxicityClass",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "country",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "description",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "id",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "references",
+            "datatype": "string",
+            "arrowType": "list<element: struct<ref_id: string, ref_type: string, ref_url: string>>"
+          },
+          {
+            "name": "warningType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "year",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "efo_term",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "efo_id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "efo_id_for_warning_class",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/evidence.parquet",
+      "name": "evidence",
+      "format": "parquet-directory",
+      "parquetPartFiles": 0,
+      "rowCount": 29602753,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "datasourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "alleleOrigins",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "allelicRequirements",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "ancestry",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "ancestryId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "beta",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "betaConfidenceIntervalLower",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "betaConfidenceIntervalUpper",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "biologicalModelAllelicComposition",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "biologicalModelGeneticBackground",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "biologicalModelId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "biomarkerName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "biomarkers",
+            "datatype": "string",
+            "arrowType": "struct<geneExpression: list<element: struct<id: string, name: string>>, geneticVariation: list<element: struct<functionalConsequenceId: string, id: string, name: string>>>"
+          },
+          {
+            "name": "biosamplesFromSource",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "cellType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "clinicalPhase",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "clinicalSignificances",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "clinicalStatus",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "cohortDescription",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "cohortId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "cohortPhenotypes",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "cohortShortName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "confidence",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "contrast",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "crisprScreenLibrary",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datatypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseCellLines",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, name: string, tissue: string, tissueId: string>>"
+          },
+          {
+            "name": "diseaseFromSource",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseFromSourceMappedId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseModelAssociatedHumanPhenotypes",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, label: string>>"
+          },
+          {
+            "name": "diseaseModelAssociatedModelPhenotypes",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, label: string>>"
+          },
+          {
+            "name": "drugFromSource",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "drugId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "drugResponse",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "geneticBackground",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "literature",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "log2FoldChangePercentileRank",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "log2FoldChangeValue",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "mutatedSamples",
+            "datatype": "string",
+            "arrowType": "list<element: struct<functionalConsequenceId: string, numberMutatedSamples: double, numberSamplesTested: double, numberSamplesWithMutationType: int64>>"
+          },
+          {
+            "name": "oddsRatio",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "oddsRatioConfidenceIntervalLower",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "oddsRatioConfidenceIntervalUpper",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "pValueExponent",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "pValueMantissa",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "pathways",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, name: string>>"
+          },
+          {
+            "name": "projectId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "reactionId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "reactionName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "releaseDate",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "releaseVersion",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "resourceScore",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "sex",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "significantDriverMethods",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "statisticalMethod",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "statisticalMethodOverview",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "statisticalTestTail",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyCases",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "studyCasesWithQualifyingVariants",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "studyId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyOverview",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studySampleSize",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "studyStartDate",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyStopReason",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyStopReasonCategories",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "targetFromSource",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetInModel",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetInModelEnsemblId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetInModelMgiId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetModulation",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "urls",
+            "datatype": "string",
+            "arrowType": "list<element: struct<niceName: string, url: string>>"
+          },
+          {
+            "name": "variantAminoacidDescriptions",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "variantFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantFunctionalConsequenceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantHgvsId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantRsId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "pmcIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "publicationYear",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "studyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "textMiningSentences",
+            "datatype": "string",
+            "arrowType": "list<element: struct<dEnd: int64, dStart: int64, section: string, tEnd: int64, tStart: int64, text: string>>"
+          },
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "variantEffect",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "directionOnTrait",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/expression.parquet",
+      "name": "expression",
+      "format": "parquet-directory",
+      "parquetPartFiles": 4,
+      "rowCount": 43804,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "tissues",
+            "datatype": "string",
+            "arrowType": "list<element: struct<efo_code: string, label: string, organs: list<element: string>, anatomical_systems: list<element: string>, rna: struct<value: double, zscore: int32, level: int32, unit: string> not null, protein: struct<reliability: bool, level: int32, cell_type: list<element: struct<name: string, reliability: bool, level: int32> not null> not null> not null> not null>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/go.parquet",
+      "name": "go",
+      "format": "parquet-directory",
+      "parquetPartFiles": 4,
+      "rowCount": 48030,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "name",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/interaction.parquet",
+      "name": "interaction",
+      "format": "parquet-directory",
+      "parquetPartFiles": 8,
+      "rowCount": 14524026,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "sourceDatabase",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetA",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intA",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intABiologicalRole",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetB",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intB",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intBBiologicalRole",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "speciesA",
+            "datatype": "string",
+            "arrowType": "struct<mnemonic: string, scientific_name: string, taxon_id: int64>"
+          },
+          {
+            "name": "speciesB",
+            "datatype": "string",
+            "arrowType": "struct<mnemonic: string, scientific_name: string, taxon_id: int64>"
+          },
+          {
+            "name": "count",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "scoring",
+            "datatype": "number",
+            "arrowType": "double"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/interaction_evidence.parquet",
+      "name": "interaction_evidence",
+      "format": "parquet-directory",
+      "parquetPartFiles": 200,
+      "rowCount": 27286730,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "participantDetectionMethodA",
+            "datatype": "string",
+            "arrowType": "list<element: struct<miIdentifier: string, shortName: string>>"
+          },
+          {
+            "name": "participantDetectionMethodB",
+            "datatype": "string",
+            "arrowType": "list<element: struct<miIdentifier: string, shortName: string>>"
+          },
+          {
+            "name": "hostOrganismTaxId",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "targetB",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "evidenceScore",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "expansionMethodShortName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "hostOrganismScientificName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intBBiologicalRole",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "interactionResources",
+            "datatype": "string",
+            "arrowType": "struct<databaseVersion: string, sourceDatabase: string>"
+          },
+          {
+            "name": "interactionDetectionMethodShortName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intA",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intBSource",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "interactionTypeMiIdentifier",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "speciesB",
+            "datatype": "string",
+            "arrowType": "struct<mnemonic: string, scientificName: string, taxonId: int64>"
+          },
+          {
+            "name": "expansionMethodMiIdentifier",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "interactionTypeShortName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "interactionIdentifier",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "hostOrganismTissue",
+            "datatype": "string",
+            "arrowType": "struct<fullName: string, shortName: string, xrefs: list<element: string>>"
+          },
+          {
+            "name": "speciesA",
+            "datatype": "string",
+            "arrowType": "struct<mnemonic: string, scientificName: string, taxonId: int64>"
+          },
+          {
+            "name": "intASource",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intB",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "pubmedId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "intABiologicalRole",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "interactionScore",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "targetA",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "interactionDetectionMethodMiIdentifier",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/known_drug.parquet",
+      "name": "known_drug",
+      "format": "parquet-directory",
+      "parquetPartFiles": 2,
+      "rowCount": 253442,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "drugId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "diseaseId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "phase",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "status",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "urls",
+            "datatype": "string",
+            "arrowType": "list<element: struct<niceName: string, url: string>>"
+          },
+          {
+            "name": "ancestors",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "label",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "approvedSymbol",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "approvedName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetClass",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "prefName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "tradeNames",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "synonyms",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "drugType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "mechanismOfAction",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetName",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/l2g_prediction.parquet",
+      "name": "l2g_prediction",
+      "format": "parquet-directory",
+      "parquetPartFiles": 16,
+      "rowCount": 1473532,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "studyLocusId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "geneId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "score",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "features",
+            "datatype": "string",
+            "arrowType": "list<element: struct<name: string not null, value: float, shapValue: float> not null>"
+          },
+          {
+            "name": "shapBaseValue",
+            "datatype": "number",
+            "arrowType": "float"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/literature.parquet",
+      "name": "literature",
+      "format": "parquet-directory",
+      "parquetPartFiles": 334,
+      "rowCount": 147395177,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "pmid",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "pmcid",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "date",
+            "datatype": "datetime",
+            "arrowType": "date32[day]"
+          },
+          {
+            "name": "year",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "month",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "day",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "keywordId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "relevance",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "keywordType",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/literature_vector.parquet",
+      "name": "literature_vector",
+      "format": "parquet-directory",
+      "parquetPartFiles": 256,
+      "rowCount": 54357,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "category",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "word",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "norm",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "vector",
+            "datatype": "string",
+            "arrowType": "list<element: double not null>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/mouse_phenotype.parquet",
+      "name": "mouse_phenotype",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 210579,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "biologicalModels",
+            "datatype": "string",
+            "arrowType": "list<element: struct<allelicComposition: string, geneticBackground: string, id: string, literature: list<element: string>>>"
+          },
+          {
+            "name": "modelPhenotypeClasses",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, label: string>>"
+          },
+          {
+            "name": "modelPhenotypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "modelPhenotypeLabel",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetInModel",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetInModelEnsemblId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetInModelMgiId",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/openfda_significant_adverse_drug_reactions.parquet",
+      "name": "openfda_significant_adverse_drug_reactions",
+      "format": "parquet-directory",
+      "parquetPartFiles": 200,
+      "rowCount": 114733,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "chembl_id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "event",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "count",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "llr",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "critval",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "meddraCode",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/openfda_significant_adverse_target_reactions.parquet",
+      "name": "openfda_significant_adverse_target_reactions",
+      "format": "parquet-directory",
+      "parquetPartFiles": 198,
+      "rowCount": 28290,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "event",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "count",
+            "datatype": "integer",
+            "arrowType": "int64"
+          },
+          {
+            "name": "llr",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "critval",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "meddraCode",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/pharmacogenomics.parquet",
+      "name": "pharmacogenomics",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 31649,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "datasourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datasourceVersion",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "datatypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "directionality",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "evidenceLevel",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "genotype",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "genotypeAnnotationText",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "genotypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "haplotypeFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "haplotypeId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "literature",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "pgxCategory",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "phenotypeFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "phenotypeText",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantAnnotation",
+            "datatype": "string",
+            "arrowType": "list<element: struct<baseAlleleOrGenotype: string, comparisonAlleleOrGenotype: string, directionality: string, effect: string, effectDescription: string, effectType: string, entity: string, literature: string>>"
+          },
+          {
+            "name": "studyId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "targetFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantFunctionalConsequenceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantRsId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "isDirectTarget",
+            "datatype": "boolean",
+            "arrowType": "bool"
+          },
+          {
+            "name": "drugs",
+            "datatype": "string",
+            "arrowType": "list<element: struct<drugFromSource: string, drugId: string> not null>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/reactome.parquet",
+      "name": "reactome",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 2769,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "label",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "ancestors",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "descendants",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "children",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "parents",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "path",
+            "datatype": "string",
+            "arrowType": "list<element: list<element: string>>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/so.parquet",
+      "name": "so",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 2604,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "large_string"
+          },
+          {
+            "name": "label",
+            "datatype": "string",
+            "arrowType": "large_string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/study.parquet",
+      "name": "study",
+      "format": "parquet-directory",
+      "parquetPartFiles": 1,
+      "rowCount": 1966178,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "studyId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "geneId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "projectId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "studyType",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "traitFromSource",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "traitFromSourceMappedIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "biosampleFromSourceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "pubmedId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "publicationTitle",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "publicationFirstAuthor",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "publicationDate",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "publicationJournal",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "backgroundTraitFromSourceMappedIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "initialSampleSize",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "nCases",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "nControls",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "nSamples",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "cohorts",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "ldPopulationStructure",
+            "datatype": "string",
+            "arrowType": "list<element: struct<ldPopulation: string, relativeSampleSize: double>>"
+          },
+          {
+            "name": "discoverySamples",
+            "datatype": "string",
+            "arrowType": "list<element: struct<sampleSize: int32, ancestry: string>>"
+          },
+          {
+            "name": "replicationSamples",
+            "datatype": "string",
+            "arrowType": "list<element: struct<sampleSize: int32, ancestry: string>>"
+          },
+          {
+            "name": "qualityControls",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "analysisFlags",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "summarystatsLocation",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "hasSumstats",
+            "datatype": "boolean",
+            "arrowType": "bool"
+          },
+          {
+            "name": "condition",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "sumstatQCValues",
+            "datatype": "string",
+            "arrowType": "list<element: struct<QCCheckName: string, QCCheckValue: float>>"
+          },
+          {
+            "name": "diseaseIds",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "backgroundDiseaseIds",
+            "datatype": "string",
+            "arrowType": "list<element: string not null>"
+          },
+          {
+            "name": "biosampleId",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/target.parquet",
+      "name": "target",
+      "format": "parquet-directory",
+      "parquetPartFiles": 10,
+      "rowCount": 78726,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "approvedSymbol",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "biotype",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "transcriptIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "canonicalTranscript",
+            "datatype": "string",
+            "arrowType": "struct<id: string, chromosome: string, start: int64, end: int64, strand: string>"
+          },
+          {
+            "name": "canonicalExons",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "genomicLocation",
+            "datatype": "string",
+            "arrowType": "struct<chromosome: string, start: int64, end: int64, strand: int32>"
+          },
+          {
+            "name": "alternativeGenes",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "approvedName",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "go",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, source: string, evidence: string, aspect: string, geneProduct: string, ecoId: string>>"
+          },
+          {
+            "name": "hallmarks",
+            "datatype": "string",
+            "arrowType": "struct<attributes: list<element: struct<pmid: int64, description: string, attribute_name: string> not null>, cancerHallmarks: list<element: struct<pmid: int64, description: string, impact: string, label: string> not null>>"
+          },
+          {
+            "name": "synonyms",
+            "datatype": "string",
+            "arrowType": "list<element: struct<label: string, source: string>>"
+          },
+          {
+            "name": "symbolSynonyms",
+            "datatype": "string",
+            "arrowType": "list<element: struct<label: string, source: string>>"
+          },
+          {
+            "name": "nameSynonyms",
+            "datatype": "string",
+            "arrowType": "list<element: struct<label: string, source: string>>"
+          },
+          {
+            "name": "functionDescriptions",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "subcellularLocations",
+            "datatype": "string",
+            "arrowType": "list<element: struct<location: string, source: string, termSL: string, labelSL: string>>"
+          },
+          {
+            "name": "targetClass",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: int64, label: string, level: string not null> not null>"
+          },
+          {
+            "name": "obsoleteSymbols",
+            "datatype": "string",
+            "arrowType": "list<element: struct<label: string, source: string>>"
+          },
+          {
+            "name": "obsoleteNames",
+            "datatype": "string",
+            "arrowType": "list<element: struct<label: string, source: string>>"
+          },
+          {
+            "name": "constraint",
+            "datatype": "string",
+            "arrowType": "list<element: struct<constraintType: string not null, score: float, exp: float, obs: int32, oe: float, oeLower: float, oeUpper: float, upperRank: int32, upperBin: int32, upperBin6: int32> not null>"
+          },
+          {
+            "name": "tep",
+            "datatype": "string",
+            "arrowType": "struct<targetFromSourceId: string, description: string, therapeuticArea: string, url: string>"
+          },
+          {
+            "name": "proteinIds",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, source: string> not null>"
+          },
+          {
+            "name": "dbXrefs",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, source: string>>"
+          },
+          {
+            "name": "chemicalProbes",
+            "datatype": "string",
+            "arrowType": "list<element: struct<control: string, drugId: string, id: string, isHighQuality: bool, mechanismOfAction: list<element: string>, origin: list<element: string>, probeMinerScore: int64, probesDrugsScore: int64, scoreInCells: int64, scoreInOrganisms: int64, targetFromSourceId: string, urls: list<element: struct<niceName: string, url: string>>> not null>"
+          },
+          {
+            "name": "homologues",
+            "datatype": "string",
+            "arrowType": "list<element: struct<speciesId: string, speciesName: string, homologyType: string, targetGeneId: string, isHighConfidence: string, targetGeneSymbol: string, queryPercentageIdentity: double, targetPercentageIdentity: double, priority: int32> not null>"
+          },
+          {
+            "name": "tractability",
+            "datatype": "string",
+            "arrowType": "list<element: struct<modality: string not null, id: string not null, value: bool not null> not null>"
+          },
+          {
+            "name": "safetyLiabilities",
+            "datatype": "string",
+            "arrowType": "list<element: struct<event: string, eventId: string, effects: list<element: struct<direction: string, dosing: string>>, biosamples: list<element: struct<cellFormat: string, cellLabel: string, tissueId: string, tissueLabel: string>>, datasource: string, literature: string, url: string, studies: list<element: struct<description: string, name: string, type: string>>> not null>"
+          },
+          {
+            "name": "pathways",
+            "datatype": "string",
+            "arrowType": "list<element: struct<pathwayId: string, pathway: string, topLevelTerm: string> not null>"
+          },
+          {
+            "name": "tss",
+            "datatype": "integer",
+            "arrowType": "int64"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/target_essentiality.parquet",
+      "name": "target_essentiality",
+      "format": "parquet-directory",
+      "parquetPartFiles": 10,
+      "rowCount": 17898,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "id",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "geneEssentiality",
+            "datatype": "string",
+            "arrowType": "list<element: struct<depMapEssentiality: list<element: struct<screens: list<element: struct<cellLineName: string, depmapId: string, diseaseCellLineId: string, diseaseFromSource: string, expression: double, geneEffect: double, mutation: string>>, tissueId: string, tissueName: string>>, isEssential: bool> not null>"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/target_prioritisation.parquet",
+      "name": "target_prioritisation",
+      "format": "parquet-directory",
+      "parquetPartFiles": 10,
+      "rowCount": 78726,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "targetId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "isInMembrane",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "isSecreted",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "hasSafetyEvent",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "hasPocket",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "hasLigand",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "hasSmallMoleculeBinder",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "geneticConstraint",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "paralogMaxIdentityPercentage",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "mouseOrthologMaxIdentityPercentage",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "isCancerDriverGene",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "hasTEP",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "mouseKOScore",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "hasHighQualityChemicalProbes",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "maxClinicalTrialPhase",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "tissueSpecificity",
+            "datatype": "number",
+            "arrowType": "double"
+          },
+          {
+            "name": "tissueDistribution",
+            "datatype": "number",
+            "arrowType": "double"
+          }
+        ]
+      }
+    },
+    {
+      "url": "brick/variant.parquet",
+      "name": "variant",
+      "format": "parquet-directory",
+      "parquetPartFiles": 25,
+      "rowCount": 7419342,
+      "tableSchema": {
+        "columns": [
+          {
+            "name": "variantId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "chromosome",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "position",
+            "datatype": "integer",
+            "arrowType": "int32"
+          },
+          {
+            "name": "referenceAllele",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "alternateAllele",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "variantEffect",
+            "datatype": "string",
+            "arrowType": "list<element: struct<method: string, assessment: string, score: float, assessmentFlag: string, targetId: string, normalisedScore: double>>"
+          },
+          {
+            "name": "mostSevereConsequenceId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "transcriptConsequences",
+            "datatype": "string",
+            "arrowType": "list<element: struct<variantFunctionalConsequenceIds: list<element: string>, aminoAcidChange: string, uniprotAccessions: list<element: string>, isEnsemblCanonical: bool, codons: string, distanceFromFootprint: int64, distanceFromTss: int64, appris: string, maneSelect: string, targetId: string, impact: string, lofteePrediction: string, siftPrediction: float, polyphenPrediction: float, consequenceScore: float, transcriptIndex: int32, approvedSymbol: string, biotype: string, transcriptId: string> not null>"
+          },
+          {
+            "name": "rsIds",
+            "datatype": "string",
+            "arrowType": "list<element: string>"
+          },
+          {
+            "name": "hgvsId",
+            "datatype": "string",
+            "arrowType": "string"
+          },
+          {
+            "name": "alleleFrequencies",
+            "datatype": "string",
+            "arrowType": "list<element: struct<populationName: string, alleleFrequency: double> not null>"
+          },
+          {
+            "name": "dbXrefs",
+            "datatype": "string",
+            "arrowType": "list<element: struct<id: string, source: string> not null>"
+          },
+          {
+            "name": "variantDescription",
+            "datatype": "string",
+            "arrowType": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
